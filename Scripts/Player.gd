@@ -54,7 +54,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, FLOOR)
 	#print(onground)
 
-	if (swipeup and onground):
+	if (swipeup and onground and !sliding):
 		print("Jump.")
 		velocity.y += JUMP_SPEED
 		jumping = true
@@ -71,6 +71,11 @@ func _physics_process(delta):
 		velocity.y -= JUMP_SPEED*2
 		falling = true
 		swipedown = false
+	if (swipeup and onground and sliding):
+		print("Slide end test")
+		jumping = false
+		sliding = false
+	
 	
 	if velocity.y < 0:
 		jumping = true
