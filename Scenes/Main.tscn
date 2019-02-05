@@ -12,27 +12,27 @@
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-jump-01.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-jump-02.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-jump-03.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-fall-00.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-fall-01.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-2-01.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-2-02.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-2-03.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-wall-slide-00.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-wall-slide-01.png" type="Texture" id=20]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-00.png" type="Texture" id=21]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-01.png" type="Texture" id=22]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-02.png" type="Texture" id=23]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-00.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-01.png" type="Texture" id=25]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-02.png" type="Texture" id=26]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-03.png" type="Texture" id=27]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-00.png" type="Texture" id=28]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-01.png" type="Texture" id=29]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-02.png" type="Texture" id=30]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-03.png" type="Texture" id=31]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-04.png" type="Texture" id=32]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-05.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-2-00.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-2-01.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-2-02.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-2-03.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-wall-slide-00.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-wall-slide-01.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-00.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-01.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-02.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-03.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-04.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-run-05.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-fall-00.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-fall-01.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-00.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-01.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-02.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-00.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-01.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-02.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-03.png" type="Texture" id=33]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -62,34 +62,34 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "idle2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "wallSlide",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
 "loop": true,
 "name": "slideEnd",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "hangtime",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
-"loop": true,
-"name": "run",
 "speed": 5.0
 } ]
 
@@ -128,9 +128,11 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 2 )
+_sections_unfolded = [ "Pause" ]
 __meta__ = {
 "_edit_group_": true
 }
+swipe_distance = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="0"]
 
@@ -141,7 +143,6 @@ shape = SubResource( 2 )
 
 frames = SubResource( 3 )
 animation = "wallSlide"
-frame = 1
 playing = true
 
 

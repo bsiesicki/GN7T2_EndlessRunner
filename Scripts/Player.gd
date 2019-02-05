@@ -5,6 +5,9 @@ const JUMP_SPEED = -350
 const JUMP_MAX_AIRBORNE_TIME = 0.2
 const FLOOR = Vector2(0, -1)
 
+enum State {RUNNING, SLIDING, JUMPING, FALLING}
+enum Swipe {LEFT, RIGHT, UP, DOWN, BLANK}
+
 var on_air_time = 100
 var swipeup = false
 var swipedown = false
@@ -22,6 +25,7 @@ var speed
 var start_time
 var direction = Vector2()
 var swipe_finished = false
+export (int) var swipe_distance = 50
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -36,17 +40,17 @@ func _input(event):
 		else:
 			direction = event.position - start
 			speed = (direction.length())/(elapsed_time - start_time)
-			direction = direction.normalized()
+			#direction = direction.normalized()
 			swipe_finished = true
-			print(direction.y)
+			print(direction)
 
 func _physics_process(delta):
 	elapsed_time += delta
-	if direction.y < 0 and swipe_finished == true:
+	if direction.y < -swipe_distance and swipe_finished == true:
 		#velocity.y += JUMP_SPEED
 		swipeup = true
 		swipe_finished = false
-	if direction.y > 0 and swipe_finished == true:
+	if direction.y > swipe_distance and swipe_finished == true:
 		swipedown = true
 		#velocity.y -= JUMP_SPEED
 		swipe_finished = false
