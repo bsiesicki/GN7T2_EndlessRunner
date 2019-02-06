@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-01.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-02.png" type="Texture" id=32]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-03.png" type="Texture" id=33]
+[ext_resource path="res://Scripts/PlayerTest.gd" type="Script" id=34]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -122,7 +123,7 @@ shape = SubResource( 1 )
 
 [node name="Player" type="KinematicBody2D" parent="." index="1"]
 
-position = Vector2( 160, 112 )
+position = Vector2( 117.895, 110.808 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -132,6 +133,7 @@ _sections_unfolded = [ "Pause" ]
 __meta__ = {
 "_edit_group_": true
 }
+swipe_angle_const = 0.75
 swipe_distance = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" index="0"]
@@ -142,7 +144,34 @@ shape = SubResource( 2 )
 [node name="PlayerSprite" type="AnimatedSprite" parent="Player" index="1"]
 
 frames = SubResource( 3 )
-animation = "wallSlide"
+animation = "idle"
 playing = true
+
+[node name="Player2" type="KinematicBody2D" parent="." index="2"]
+
+position = Vector2( 206.474, 110.808 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 34 )
+_sections_unfolded = [ "Pause" ]
+__meta__ = {
+"_edit_group_": true
+}
+swipe_angle_const = 0.75
+swipe_distance = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2" index="0"]
+
+position = Vector2( 0, 3 )
+shape = SubResource( 2 )
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="Player2" index="1"]
+
+frames = SubResource( 3 )
+animation = "idle"
+playing = true
+flip_h = true
 
 
