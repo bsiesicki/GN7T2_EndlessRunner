@@ -17,7 +17,7 @@ var falling = false
 var running = true
 var onground = true
 var prev_jump_pressed = false
-var player_speed = 200
+var player_speed = 50 
 var velocity = Vector2()
 var elapsed_time = 0    
 var start
@@ -41,13 +41,14 @@ func _input(event):
 			start_time = elapsed_time
 		else:
 			direction = event.position - start
-			speed = (direction.length())/(elapsed_time - start_time)
+			#speed = (direction.length())/(elapsed_time - start_time)
 			#direction = direction.normalized()
 			swipe_angle = direction.normalized().y
 			swipe_finished = true
 			print(direction, swipe_angle)
 
 func _physics_process(delta):
+	velocity.x = player_speed
 	elapsed_time += delta
 	if direction.y < -swipe_distance and swipe_finished == true and swipe_angle < -swipe_angle_const:
 		#velocity.y += JUMP_SPEED
