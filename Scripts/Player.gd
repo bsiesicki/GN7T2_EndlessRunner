@@ -11,6 +11,7 @@ enum Swipe {LEFT, RIGHT, UP, DOWN, BLANK}
 var on_air_time = 100
 var swipeup = false
 var swipedown = false
+var swiperight = false
 var jumping = false
 var sliding = false
 var falling = false
@@ -57,7 +58,11 @@ func _physics_process(delta):
 		swipe_finished = false
 	if direction.y > swipe_distance and swipe_finished == true and swipe_angle > swipe_angle_const:
 		swipedown = true
+		print(swipe_angle)
 		#velocity.y -= JUMP_SPEED
+		swipe_finished = false
+	if direction.x > swipe_distance and swipe_finished == true and swipe_angle < swipe_angle_const/3:
+		swiperight = true
 		swipe_finished = false
 	velocity.y += GRAVITY  
 	velocity = move_and_slide(velocity, FLOOR)
@@ -88,6 +93,11 @@ func _physics_process(delta):
 		$slideCollision.disabled = true
 		jumping = false
 		sliding = false
+	if (swiperight and onground and !sliding and !jumping and !falling):
+		print("Blink")
+		var blink = Vector2(self.position.x + 20, self.position.y)
+		self.position = blink
+		swiperight = false
 	
 	
 	if velocity.y < 0:
