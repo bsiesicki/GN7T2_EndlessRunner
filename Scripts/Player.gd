@@ -30,6 +30,7 @@ var swipe_finished = false
 export (int) var swipe_distance = 50
 
 func _ready():
+	$slideCollision.disabled = true
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
@@ -69,6 +70,8 @@ func _physics_process(delta):
 		swipeup = false
 	if (swipedown and onground):
 		print("Slide.")
+		$runCollision.disabled = true
+		$slideCollision.disabled = false
 		sliding = true
 		falling = false
 		jumping = false
@@ -81,6 +84,8 @@ func _physics_process(delta):
 		swipedown = false
 	if (swipeup and onground and sliding):
 		print("Slide end test")
+		$runCollision.disabled = false
+		$slideCollision.disabled = true
 		jumping = false
 		sliding = false
 	

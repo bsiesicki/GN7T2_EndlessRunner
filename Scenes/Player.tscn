@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-slide-00.png" type="Texture" id=2]
@@ -36,7 +36,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 12.8372, 14.8421 )
+extents = Vector2( 13.3245, 13.7972 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.2516, 7.1609 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -101,16 +106,20 @@ __meta__ = {
 swipe_angle_const = 0.75
 swipe_distance = 50
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+[node name="runCollision" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 0, 3 )
+position = Vector2( 0, 4 )
 shape = SubResource( 1 )
 
-[node name="PlayerSprite" type="AnimatedSprite" parent="." index="1"]
+[node name="slideCollision" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -0.174828, 10.8252 )
+shape = SubResource( 3 )
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="." index="2"]
 
 frames = SubResource( 2 )
-animation = "idle"
-frame = 3
+animation = "slide"
 playing = true
 
 
