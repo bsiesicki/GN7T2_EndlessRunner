@@ -38,12 +38,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 13.3245, 13.7972 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 14.2516, 7.1609 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
@@ -103,6 +103,10 @@ _sections_unfolded = [ "Pause" ]
 __meta__ = {
 "_edit_group_": true
 }
+JUMP_SPEED = -350
+slide_distance = 50
+player_speed = 50
+dash_distance = 20
 swipe_angle_const = 0.75
 swipe_distance = 50
 
@@ -114,11 +118,11 @@ shape = SubResource( 1 )
 [node name="slideCollision" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( -0.174828, 10.8252 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="PlayerSprite" type="AnimatedSprite" parent="." index="2"]
 
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 animation = "slide"
 playing = true
 
