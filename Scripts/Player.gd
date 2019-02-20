@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const GRAVITY = 10
-const JUMP_SPEED = -350
+export (int) var JUMP_SPEED = -350
 const JUMP_MAX_AIRBORNE_TIME = 0.2
 const FLOOR = Vector2(0, -1)
 
@@ -18,7 +18,11 @@ var falling = false
 var running = true
 var onground = true
 var prev_jump_pressed = false
-var player_speed = 50 
+var slide_start = 0
+var slide_end = 0
+export (int) var slide_distance = 50
+export (int) var player_speed = 50 
+export (int) var dash_distance = 20
 var velocity = Vector2()
 var elapsed_time = 0    
 var start
@@ -73,6 +77,7 @@ func _physics_process(delta):
 		velocity.y += JUMP_SPEED
 		jumping = true
 		swipeup = false
+		
 	if (swipedown and onground):
 		print("Slide.")
 		$runCollision.disabled = true
@@ -82,6 +87,8 @@ func _physics_process(delta):
 		jumping = false
 		running = false
 		swipedown = false
+		slide_start = self.position.x
+		print("Slide start: " + str(slide_start))
 	if (swipedown and !onground):
 		print("SMASH!")
 		velocity.y -= JUMP_SPEED*2
@@ -95,10 +102,30 @@ func _physics_process(delta):
 		sliding = false
 	if (swiperight and onground and !sliding and !jumping and !falling):
 		print("Blink")
-		var blink = Vector2(self.position.x + 20, self.position.y)
+		var blink = Vector2(self.position.x + dash_distance, self.position.y)
 		self.position = blink
 		swiperight = false
-	
+	if (swiperight and (jumping or falling)):
+		print("Mid-air Blink")
+		var ma_blink = Vector2(self.position.x + dash_distance, self.position.y)
+		self.position = ma_blink
+		swiperight = false
+	if (swiperight and sliding):
+		var sblink = Vector2(self.position.x + dash_distance, self.position.y)
+		self.position = sblink
+		swiperight = false
+		sliding = false
+		$runCollision.disabled = false
+		$slideCollision.disabled = true
+		
+	if (sliding):
+		slide_end = (self.position.x)
+		if (slide_end - slide_start > slide_distance):
+			$runCollision.disabled = false
+			$slideCollision.disabled = true
+			sliding = false
+			print("Slide_end: " + str(slide_end))
+			print("Slide distance: " + str(slide_end-slide_start))
 	
 	if velocity.y < 0:
 		jumping = true

@@ -12,9 +12,15 @@
 custom_solver_bias = 0.0
 extents = Vector2( 5.30612, 7.92105 )
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+JUMP_SPEED = -350
+slide_distance = 50
+player_speed = 50
+dash_distance = 20
+swipe_distance = 40
 
 [node name="GroundSpawner" parent="." index="1" instance=ExtResource( 2 )]
 
