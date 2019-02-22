@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Ground_Spawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Environment/background_dimm.jpg" type="Texture" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=6]
-[ext_resource path="res://Assets/kisspng-computer-icons-linkedin-desktop-wallpaper-pause-button-5acf7acad25c66.6665510715235468268617.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/StaticBody2D.gd" type="Script" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=7]
+[ext_resource path="res://Assets/kisspng-computer-icons-linkedin-desktop-wallpaper-pause-button-5acf7acad25c66.6665510715235468268617.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,7 +18,7 @@ extents = Vector2( 5.30612, 7.92105 )
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
-slide_distance = 100
+position = Vector2( -1.50624, 60.5994 )
 player_speed = 100
 swipe_distance = 40
 
@@ -82,22 +83,22 @@ centered = false
 offset = Vector2( -500, -250 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
+[node name="testLaser" type="KinematicBody2D" parent="." index="3"]
 
-position = Vector2( 320, 130 )
+position = Vector2( 320, 0 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+collision/safe_margin = 0.08
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="icon" type="Sprite" parent="StaticBody2D" index="0"]
+[node name="icon" type="Sprite" parent="testLaser" index="0"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testLaser" index="1"]
 
 scale = Vector2( 5.97403, 3.97107 )
 shape = SubResource( 1 )
@@ -118,7 +119,7 @@ __meta__ = {
 
 [node name="icon" type="Sprite" parent="StaticBody2D2" index="0"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="1"]
 
@@ -141,7 +142,7 @@ __meta__ = {
 
 [node name="icon" type="Sprite" parent="StaticBody2D3" index="0"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" index="1"]
 
@@ -150,13 +151,12 @@ shape = SubResource( 1 )
 
 [node name="PauseMenu" type="CanvasLayer" parent="." index="6"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="TextureButton" type="TextureButton" parent="PauseMenu" index="0"]
 
@@ -177,7 +177,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 8 )
 expand = true
 _sections_unfolded = [ "Pause", "Rect", "Textures" ]
 

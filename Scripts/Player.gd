@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 const GRAVITY = 10
 export (int) var JUMP_SPEED = -350
 const JUMP_MAX_AIRBORNE_TIME = 0.2
@@ -8,6 +9,7 @@ const FLOOR = Vector2(0, -1)
 enum State {RUNNING, SLIDING, JUMPING, FALLING}
 enum Swipe {LEFT, RIGHT, UP, DOWN, BLANK}
 
+
 var on_air_time = 100
 var swipeup = false
 var swipedown = false
@@ -15,14 +17,15 @@ var swiperight = false
 var jumping = false
 var sliding = false
 var falling = false
+#var dashing = false
 var running = true
 var onground = true
 var prev_jump_pressed = false
 var slide_start = 0
 var slide_end = 0
-export (int) var slide_distance = 50
+export (int) var slide_distance = 120
 export (int) var player_speed = 50 
-export (int) var dash_distance = 20
+#export (int) var dash_distance = 120
 var velocity = Vector2()
 var elapsed_time = 0    
 var start
@@ -147,11 +150,13 @@ func _physics_process(delta):
 		onground = false
 	
 	if (jumping):
-		$PlayerSprite.play("jump")
+		$PlayerSprite.play("ninjaJump")
 	elif (falling):
-		$PlayerSprite.play("fall")
+		$PlayerSprite.play("ninjaFall")
 	elif (running):
-		$PlayerSprite.play("run")
+		$PlayerSprite.play("ninjaRun")
 	elif (sliding):
-		$PlayerSprite.play("slide")
+		$PlayerSprite.play("ninjaSlide")
+#	elif (dashing):
+#		$PlayerSprite.play("ninjaDash")
 
