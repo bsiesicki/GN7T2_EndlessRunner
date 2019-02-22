@@ -25,7 +25,7 @@ var slide_start = 0
 var slide_end = 0
 export (int) var slide_distance = 120
 export (int) var player_speed = 50 
-#export (int) var dash_distance = 120
+export (int) var dash_distance = 120
 var velocity = Vector2()
 var elapsed_time = 0    
 var start
