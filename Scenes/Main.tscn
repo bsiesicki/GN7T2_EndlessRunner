@@ -91,6 +91,7 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 editor/display_folded = true
 position = Vector2( 320, 0 )
+scale = Vector2( 1, 0.05 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -110,7 +111,9 @@ shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 1120, 120 )
+scale = Vector2( 1, 0.05 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -135,6 +138,7 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 position = Vector2( 670, 100 )
+scale = Vector2( 1, 0.05 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -157,6 +161,7 @@ shape = SubResource( 1 )
 
 [node name="DistanceIndicator" type="CanvasLayer" parent="." index="6"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -178,6 +183,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0 m"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -185,6 +191,7 @@ _sections_unfolded = [ "custom_colors" ]
 
 [node name="PauseMenu" type="CanvasLayer" parent="." index="7"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
