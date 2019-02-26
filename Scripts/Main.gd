@@ -6,8 +6,8 @@ var dist_scale = 40
 var scale = Vector2(1.0,0.05)
 var rotation_speed = 0.01
 onready var camera
-var platforma = preload("res://Scenes/Laser.tscn")
-var laser = preload("res://Scenes/laser.scn")
+var platforma = preload("res://Scenes/platform.tscn")
+var laser = preload("res://Scenes/laser.tscn")
 var platforma_instance
 var platforma_instance2
 var laser_instance
