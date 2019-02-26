@@ -17,6 +17,7 @@ func _ready():
 	camera = get_node("Camera2D")
 	
 	laser_instance = laser.instance()
+	laser_instance._ready(Vector2(100,100),Vector2(0.2,0.2), 200, randf()*2-1)
 	platforma_instance = platforma.instance()
 	platforma_instance2 = platforma.instance()
 	platforma_instance.position = Vector2(150,130)
@@ -24,14 +25,12 @@ func _ready():
 	self.add_child(platforma_instance)
 	self.add_child(platforma_instance2)
 	self.add_child(laser_instance)
-	laser_instance.move(Vector2(100,100))
 	pass
 
 func _physics_process(delta):
 	#Przemierzony dystans
 	indicator.text = str((int(character.position.x)/dist_scale)) + " m"
-	laser_instance.reappear(camera, randf()*30+1)
-	laser_instance.rotate(0.03)
+	laser_instance.reappear(camera.position)
 	platforma_instance.reappear(camera, randf()*30+1)
 	platforma_instance2.reappear(camera, randf()*30+1)
 	pass

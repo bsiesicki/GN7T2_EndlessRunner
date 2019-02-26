@@ -1,44 +1,48 @@
 extends KinematicBody2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-var startPosition
-var destPosition
-var vec 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	startPosition = self.position
-	move_and_slide(Vector2(0,0))
-	add_collision_exception_with(get_tree())
+var rotation_rate
+var start_position
+var dest_position
+var vect
+var dist_scale = 100
+
+func _ready(starting_position, vector, distance, starting_rotation_rate):
+	self.position = starting_position
+	start_position = self.position
+	dest_position = start_position + (distance / 2 * vector.normalized())
+	vect = vector
+	rotation_rate = starting_rotation_rate
 	pass
 
-func move(destination):
-	destPosition = destination
-
-
-func rotate(rotation_rate):
-	self.rotation = self.rotation + 1 * rotation_rate
-	pass
-	
-func reappear(camera, x):
-
-	if self.position < camera.position - Vector2(300,0):
-		self.position = camera.position + Vector2(170+x,randf()*90-39)
+func reappear(current_camera_position):
+	if self.position < current_camera_position - Vector2(300, 0):
+		self.position = current_camera_position + Vector2(170 + randf()*100-1, randf()*30-1)
+	#vect = Vector2(randf()*2-1, randf()*2-1)
 
 func _process(delta):
-	if(startPosition != destPosition):
-		if (position != destPosition):
-			move_and_collide(destPosition-position/100)
-		else:
-			move_and_collide(startPosition-position/100)
+	if(self.start_position.x < self.dest_position.x):
+		if(self.position.x > dest_position.x):
+			vect = Vector2(-vect.x, vect.y)
+		if(self.position.x < start_position.x):
+			vect = Vector2(-vect.x, vect.y)
+	else:
+		if(self.position.x < self.dest_position.x):
+			vect = Vector2(-vect.x, vect.y)
+		if(self.position.x > start_position.x):
+			vect = Vector2(-vect.x, vect.y)
 			
-	
-	print(self.position)
-#	if (get_slide_count()>0):
-#		if(get_slide_collision(0).collider.name == 'Player'):
-#			get_tree().paused = false
-#			print("laser")
+	if(self.start_position.y < self.dest_position.y):
+		if(self.position.y > dest_position.y):
+			vect = Vector2(vect.x, -vect.y)
+		if(self.position.y < start_position.y):
+			vect = Vector2(vect.x, -vect.y)
+	else:
+		if(self.position.y < dest_position.y):
+			vect = Vector2(vect.x, -vect.y)
+		if(self.position.y > start_position.y):
+			vect = Vector2(vect.x, -vect.y)
+	self.rotation += rotation_rate * delta
+	move_and_slide(vect*50)
+
 	pass
 	
