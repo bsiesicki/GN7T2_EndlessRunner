@@ -5,6 +5,8 @@ var start_position
 var dest_position
 var vect
 var dist_scale = 100
+var collision
+
 
 func _ready(starting_position, vector, distance, starting_rotation_rate):
 	self.position = starting_position
@@ -42,7 +44,6 @@ func _process(delta):
 		if(self.position.y > start_position.y):
 			vect = Vector2(vect.x, -vect.y)
 	self.rotation += rotation_rate * delta
-	move_and_slide(vect*50)
-
+	collision = move_and_collide(vect)
 	pass
 	
