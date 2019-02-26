@@ -73,6 +73,11 @@ func _physics_process(delta):
 		swipe_finished = false
 	velocity.y += GRAVITY  
 	velocity = move_and_slide(velocity, FLOOR)
+	
+	if (get_slide_count()>0):
+		if (get_slide_collision(0).collider.name == "KinematicBody2D"):
+			get_tree().paused = true
+
 	#print(onground)
 
 	if (swipeup and onground and !sliding):

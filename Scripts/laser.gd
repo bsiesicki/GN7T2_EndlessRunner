@@ -6,9 +6,11 @@ extends KinematicBody2D
 var startPosition
 var destPosition
 var vec 
+var collision
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	self.position = Vector2(300.0,0.0)
 	startPosition = self.position
 	move_and_slide(Vector2(0,0))
 	add_collision_exception_with(get_tree())
@@ -30,11 +32,13 @@ func reappear(camera, x):
 func _process(delta):
 	if(startPosition != destPosition):
 		if (position != destPosition):
-			move_and_collide(destPosition-position/100)
+			collision = move_and_collide(destPosition-position/100)
 		else:
-			move_and_collide(startPosition-position/100)
+			collision = move_and_collide(startPosition-position/100)
+			
 			
 	
+
 	print(self.position)
 #	if (get_slide_count()>0):
 #		if(get_slide_collision(0).collider.name == 'Player'):
