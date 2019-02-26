@@ -3,34 +3,35 @@ extends Node
 onready var character
 onready var indicator
 var dist_scale = 40
-onready var platform1
-onready var platform2
-onready var platform3
 var scale = Vector2(1.0,0.05)
 var rotation_speed = 0.01
 onready var camera
-
-const laser_scn = preload("res://Laser.tscn")
-
+var platforma = preload("res://Scenes/Laser.tscn")
+var laser = preload("res://Scenes/laser.scn")
+var platforma_instance
+var platforma_instance2
+var laser_instance
 func _ready():
 	character = get_node("Player")
 	indicator = get_node("DistanceIndicator/Label")
-	platform1 = get_node("testLaser")
-	platform2 = get_node("StaticBody2D2")
-	platform3 = get_node("StaticBody2D3")
 	camera = get_node("Camera2D")
-	platform1.scale = scale
-	platform2.scale = scale
-	platform3.scale = scale
+	
+	laser_instance = laser.instance()
+	platforma_instance = platforma.instance()
+	platforma_instance2 = platforma.instance()
+	platforma_instance.position = Vector2(150,130)
+	platforma_instance2.position = Vector2(350,130)
+	self.add_child(platforma_instance)
+	self.add_child(platforma_instance2)
+	self.add_child(laser_instance)
+	laser_instance.move(Vector2(100,100))
 	pass
 
 func _physics_process(delta):
 	#Przemierzony dystans
 	indicator.text = str((int(character.position.x)/dist_scale)) + " m"
-#	for i in 100:
-#		var node2d = laser_scn.instance()
-#		if (int(character.position.x) == 200*i):
-#			node2d.scale = scale
-#			node2d.position = Vector2((character.position.x+150),100)
-#			add_child(node2d)
+	laser_instance.reappear(camera, randf()*30+1)
+	laser_instance.rotate(0.03)
+	platforma_instance.reappear(camera, randf()*30+1)
+	platforma_instance2.reappear(camera, randf()*30+1)
 	pass
