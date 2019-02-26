@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-slide-00.png" type="Texture" id=2]
@@ -55,17 +55,7 @@
 [ext_resource path="res://Assets/Player/Ninja/jump_down.png" type="Texture" id=53]
 [ext_resource path="res://Assets/Player/Ninja/jump.png" type="Texture" id=54]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 30, 30.6975 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 14.2516, 7.1609 )
-
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
@@ -139,7 +129,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 scale = Vector2( 0.8, 0.8 )
 input_pickable = false
@@ -158,24 +148,25 @@ dash_distance = 120
 swipe_angle_const = 0.75
 swipe_distance = 50
 
-[node name="runCollision" type="CollisionShape2D" parent="." index="0"]
+[node name="runCollision" type="CollisionPolygon2D" parent="." index="0"]
 
 position = Vector2( 0, 4 )
-shape = SubResource( 1 )
+build_mode = 0
+polygon = PoolVector2Array( 7.625, -37.4062, -34.7188, 2.59375, -27.8438, 22.4375, -14.25, 33.2188, 5.125, 34.3125, 28.7187, 27.2812, 33.25, 0.250002 )
 
-[node name="slideCollision" type="CollisionShape2D" parent="." index="1"]
+[node name="slideCollision" type="CollisionPolygon2D" parent="." index="1"]
 
 position = Vector2( 0.2875, 17.2 )
 scale = Vector2( 2.32225, 2.65724 )
-shape = SubResource( 2 )
+build_mode = 0
+polygon = PoolVector2Array( -14.7513, -3.82681, -6.40812, -8.17813, -1.42911, -4.94404, 5.97212, -5.59086, 2.40607, 0.583312, 15.5264, 3.52339, 12.4314, 7.93351, -7.82108, 7.75711, -3.71676, 3.8762, -7.68651, 0.0540967 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="PlayerSprite" type="AnimatedSprite" parent="." index="2"]
 
 scale = Vector2( 0.15, 0.15 )
-frames = SubResource( 3 )
-animation = "ninjaDash"
-playing = true
+frames = SubResource( 1 )
+animation = "ninjaSlide"
 _sections_unfolded = [ "Transform" ]
 
 
