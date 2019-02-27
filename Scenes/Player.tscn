@@ -7,27 +7,27 @@
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-01.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-02.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-03.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00000.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00001.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00002.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00003.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00004.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00005.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00006.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00007.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00008.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00009.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00010.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00011.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00012.png" type="Texture" id=20]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00013.png" type="Texture" id=21]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00014.png" type="Texture" id=22]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00015.png" type="Texture" id=23]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00016.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00017.png" type="Texture" id=25]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-00.png" type="Texture" id=26]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-01.png" type="Texture" id=27]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-02.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-00.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-01.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-02.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00000.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00001.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00002.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00003.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00004.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00005.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00006.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00007.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00008.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00009.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00010.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00011.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00012.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00013.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00014.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00015.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00016.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00017.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-00.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-01.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-smrslt-02.png" type="Texture" id=31]
@@ -68,15 +68,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "ninjaRun",
-"speed": 30.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "slideEnd",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "ninjaRun",
+"speed": 30.0
 }, {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
 "loop": true,
@@ -129,7 +129,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 scale = Vector2( 0.8, 0.8 )
 input_pickable = false
@@ -152,7 +152,7 @@ swipe_distance = 50
 
 position = Vector2( 0, 4 )
 build_mode = 0
-polygon = PoolVector2Array( 7.625, -37.4062, -34.7188, 2.59375, -27.8438, 22.4375, -14.25, 33.2188, 5.125, 34.3125, 28.7187, 27.2812, 33.25, 0.250002 )
+polygon = PoolVector2Array( 7.625, -37.4062, -34.7188, 2.59375, -27.8438, 22.4375, -14.25, 33.2188, 5.125, 34.3125, 24.2813, 22.5312, 11.7813, -5.75, 26.1563, -11.0625 )
 
 [node name="slideCollision" type="CollisionPolygon2D" parent="." index="1"]
 
@@ -168,7 +168,6 @@ _sections_unfolded = [ "Transform" ]
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 1 )
 animation = "ninjaRun"
-frame = 17
 _sections_unfolded = [ "Transform" ]
 
 

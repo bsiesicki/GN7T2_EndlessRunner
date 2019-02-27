@@ -17,7 +17,7 @@ func _ready():
 	camera = get_node("Camera2D")
 	
 	laser_instance = laser.instance()
-	laser_instance._ready(Vector2(100,100),Vector2(0.2,0.2), 200, randf()*2-1)
+	laser_instance._ready(Vector2(200,200),Vector2(0.2,0.2), 200, randf()*2-1)
 	platforma_instance = platforma.instance()
 	platforma_instance2 = platforma.instance()
 	platforma_instance.position = Vector2(150,130)
