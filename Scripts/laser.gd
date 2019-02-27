@@ -1,49 +1,56 @@
 extends KinematicBody2D
 
-var rotation_rate
+var rotation_rate = 0
 var start_position
 var dest_position
-var vect
-var dist_scale = 100
+var vector
 var collision
+var distance
 
-
-func _ready(starting_position, vector, distance, starting_rotation_rate):
+func _ready(starting_position, vect, starting_distance):
 	self.position = starting_position
+	distance = starting_distance
 	start_position = self.position
-	dest_position = start_position + (distance / 2 * vector.normalized())
-	vect = vector
-	rotation_rate = starting_rotation_rate
+	vector = vect
+	
+	dest_position = start_position + (distance / 2 * vect.normalized())
 	pass
 
-func reappear(current_camera_position):
-	if self.position < current_camera_position - Vector2(300, 0):
-		self.position = current_camera_position + Vector2(170 + randf()*100-1, randf()*30-1)
-	#vect = Vector2(randf()*2-1, randf()*2-1)
+func reappear(current_camera_position, vect, dist):
+	self.position = current_camera_position + Vector2(170 + randf()*100-1, randf()*100-50)
+	start_position = position
+	vector = vect
+	distance = dist
+	dest_position = start_position + (distance / 2 * vector.normalized())
+	self.rotation = randf()*90
+	rotation_rate += 0.01
+	
 
 func _process(delta):
-	if(self.start_position.x < self.dest_position.x):
+	if(self.start_position.x < dest_position.x):
 		if(self.position.x > dest_position.x):
-			vect = Vector2(-vect.x, vect.y)
+			vector = Vector2(-vector.x, vector.y)
 		if(self.position.x < start_position.x):
-			vect = Vector2(-vect.x, vect.y)
+			vector = Vector2(-vector.x, vector.y)
 	else:
-		if(self.position.x < self.dest_position.x):
-			vect = Vector2(-vect.x, vect.y)
+		if(self.position.x < dest_position.x):
+			vector = Vector2(-vector.x, vector.y)
 		if(self.position.x > start_position.x):
-			vect = Vector2(-vect.x, vect.y)
+			vector = Vector2(-vector.x, vector.y)
 			
-	if(self.start_position.y < self.dest_position.y):
+	if(self.start_position.y < dest_position.y):
 		if(self.position.y > dest_position.y):
-			vect = Vector2(vect.x, -vect.y)
+			vector = Vector2(vector.x, -vector.y)
 		if(self.position.y < start_position.y):
-			vect = Vector2(vect.x, -vect.y)
+			vector = Vector2(vector.x, -vector.y)
 	else:
 		if(self.position.y < dest_position.y):
-			vect = Vector2(vect.x, -vect.y)
+			vector = Vector2(vector.x, -vector.y)
 		if(self.position.y > start_position.y):
-			vect = Vector2(vect.x, -vect.y)
-	self.rotation += rotation_rate * delta
-	collision = move_and_collide(vect)
+			vector = Vector2(vector.x, -vector.y)
+			
+	self.rotate(rotation_rate * delta)
+	collision = move_and_collide(vector)
+	
 	pass
 	
