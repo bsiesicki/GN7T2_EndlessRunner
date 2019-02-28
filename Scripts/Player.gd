@@ -94,6 +94,7 @@ func _physics_process(delta):
 		$runCollision.disabled = true
 		$slideCollision.disabled = false
 		sliding = true
+		onground = true
 		falling = false
 		jumping = false
 		running = false
