@@ -24,7 +24,7 @@ var prev_jump_pressed = false
 var slide_start = 0
 var slide_end = 0
 export (int) var slide_distance = 120
-export (int) var player_speed = 50 
+export (int) var player_velocity = 200
 export (int) var dash_distance = 120
 var velocity = Vector2()
 var elapsed_time = 0    
@@ -57,7 +57,7 @@ func _input(event):
 			print(direction, swipe_angle)
 
 func _physics_process(delta):
-	velocity.x = player_speed
+	velocity.x = player_velocity
 	elapsed_time += delta
 	if direction.y < -swipe_distance and swipe_finished == true and swipe_angle < -swipe_angle_const:
 		#velocity.y += JUMP_SPEED
@@ -77,6 +77,8 @@ func _physics_process(delta):
 	if (get_slide_count()>0):
 		if (get_slide_collision(0).collider.name == "KinematicBody2D"):
 			get_tree().paused = true
+
+
 
 
 	#print(onground)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-slide-00.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-slide-01.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-00.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-01.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-02.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-03.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-00.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-01.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-02.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-idle-03.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-slide-00.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-slide-01.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-00.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-01.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Player/Adventurer-1.5/Individual Sprites/adventurer-stand-02.png" type="Texture" id=10]
@@ -58,14 +58,14 @@
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "slide",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "slide",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
@@ -143,7 +143,7 @@ __meta__ = {
 }
 JUMP_SPEED = -350
 slide_distance = 120
-player_speed = 50
+player_velocity = 150
 dash_distance = 120
 swipe_angle_const = 0.75
 swipe_distance = 50
@@ -156,7 +156,6 @@ polygon = PoolVector2Array( 7.625, -37.4062, -34.7188, 2.59375, -27.8438, 22.437
 
 [node name="slideCollision" type="CollisionPolygon2D" parent="." index="1"]
 
-visible = false
 position = Vector2( 0.2875, 17.2 )
 scale = Vector2( 2.32225, 2.65724 )
 build_mode = 0
@@ -167,7 +166,7 @@ _sections_unfolded = [ "Transform" ]
 
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 1 )
-animation = "ninjaRun"
+animation = "ninjaSlide"
 _sections_unfolded = [ "Transform" ]
 
 
