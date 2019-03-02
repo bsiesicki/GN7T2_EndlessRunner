@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/kisspng-computer-icons-linkedin-desktop-wallpaper-pause-button-5acf7acad25c66.6665510715235468268617.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Tanchiky_--U1J8uMr9UPw.wav" type="AudioStream" id=8]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -422,6 +422,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
 
+pause_mode = 2
 stream = ExtResource( 8 )
 volume_db = -25.0
 pitch_scale = 1.0
@@ -430,6 +431,7 @@ max_distance = 65536.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
+_sections_unfolded = [ "Pause" ]
 
 [connection signal="pressed" from="PauseMenu/TextureButton" to="PauseMenu" method="_on_TextureButton_pressed"]
 

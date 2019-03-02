@@ -35,6 +35,7 @@ func _ready():
 	randomize()
 	load_score()
 	global = get_node("/root/global")
+	global.load_settings()
 	character = get_node("Player")
 	indicator = get_node("DistanceIndicator/VBoxContainer/currentDistance")
 	pause_menu = get_node("PauseMenu")
@@ -44,6 +45,7 @@ func _ready():
 	settings_instance = settings.instance()
 	if (global.music == true):
 		bgm = get_node("AudioStreamPlayer2D")
+		bgm.volume_db = -25
 		bgm.play(0)
 
 	get_tree().paused = false
@@ -80,7 +82,7 @@ func _physics_process(delta):
 	
 	if (character.dead == true):
 		if (global.music == true):
-			bgm.stop()
+			bgm.volume_db = -40.0
 		get_tree().paused = true
 		get_node("gameOverMenu/gameOverPopup").show()
 		if ((int(character.position.x)/dist_scale)>highscore):

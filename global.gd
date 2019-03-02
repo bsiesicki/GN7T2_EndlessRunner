@@ -4,6 +4,9 @@ var music
 
 var settings = "user://settings.data"
 
+func _ready():
+	load_settings()
+
 func load_settings():
     var f = File.new()
     if f.file_exists(settings):
