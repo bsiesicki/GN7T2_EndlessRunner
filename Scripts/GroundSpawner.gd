@@ -3,10 +3,10 @@
 extends Node2D
 
 const scn_ground   = preload("res://Scenes/Ground.tscn")
-const GROUND_WIDTH = 168*2
-const AMOUNT_TO_FILL_VIEW = 2
+const GROUND_WIDTH = 168*1.4
+const AMOUNT_TO_FILL_VIEW = 3
 
-var currentPosition = Vector2(0, 0)
+var currentPosition = Vector2(-10, 0)
 
 func _ready():
 	for i in range(AMOUNT_TO_FILL_VIEW):

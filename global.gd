@@ -1,6 +1,6 @@
 extends Node
 
-var music
+var music = true
 
 var settings = "user://settings.data"
 
