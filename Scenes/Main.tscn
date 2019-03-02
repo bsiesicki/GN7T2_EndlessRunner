@@ -8,7 +8,7 @@
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=6]
 [ext_resource path="res://Assets/kisspng-computer-icons-linkedin-desktop-wallpaper-pause-button-5acf7acad25c66.6665510715235468268617.png" type="Texture" id=7]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -23,6 +23,7 @@ position = Vector2( 0, 170 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( 160, 90 )
 anchor_mode = 1
 rotating = false
@@ -51,6 +52,7 @@ _sections_unfolded = [ "Smoothing", "Transform", "Z Index" ]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D" index="0"]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -111,6 +113,7 @@ _sections_unfolded = [ "custom_colors" ]
 
 [node name="PauseMenu" type="CanvasLayer" parent="." index="4"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -259,6 +262,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="gameOverMenu" type="CanvasLayer" parent="." index="5"]
 
 pause_mode = 2
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0

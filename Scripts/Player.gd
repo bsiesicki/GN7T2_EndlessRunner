@@ -81,9 +81,10 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, FLOOR)
 	
 	if (get_slide_count()>0):
-		print(get_slide_collision(0).collider.name)
-		if (get_slide_collision(0).collider.name == "KinematicBody2D" or get_slide_collision(0).collider.name == "@KinematicBody2D@3"):
+		var collider = get_slide_collision(0).collider
+		if (collider.is_class("KinematicBody2D")):
 			dead = true
+
 
 
 	if (swipeup and onground and !sliding):
