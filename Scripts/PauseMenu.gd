@@ -13,7 +13,7 @@ func _on_resumeButton_pressed():
 	$pausePopup.hide()
 	if (get_node("/root/global").music == true):
 		get_parent().get_node("AudioStreamPlayer2D").play(position)
-		get_parent().get_node("AudioStreamPlayer2D").volume_db = -25
+		get_parent().get_node("AudioStreamPlayer2D").volume_db = -30
 	get_tree().paused = false
 
 

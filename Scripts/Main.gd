@@ -45,7 +45,7 @@ func _ready():
 	settings_instance = settings.instance()
 	if (global.music == true):
 		bgm = get_node("AudioStreamPlayer2D")
-		bgm.volume_db = -25
+		bgm.volume_db = -30
 		bgm.play(0)
 
 	get_tree().paused = false
