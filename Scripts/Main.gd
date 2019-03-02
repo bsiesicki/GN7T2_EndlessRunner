@@ -3,10 +3,14 @@ extends Node
 onready var character
 onready var indicator
 onready var highscore_indicator
+onready var pause_menu
 onready var laser_instance
 onready var laser_instance2
 onready var camera
 onready var platform_instance
+onready var bgm
+onready var settings_instance
+onready var global
 
 var score_file = "user://highscore.txt"
 var highscore = 0
@@ -17,6 +21,7 @@ var laser_movement_vector = Vector2(0,0)
 var laser_movement_distance = 100
 var platform = preload("res://Scenes/platform.tscn")
 var laser = preload("res://Scenes/laser.tscn")
+var settings = preload("res://Scenes/Settings.tscn")
 
 func load_score():
     var f = File.new()
@@ -29,11 +34,17 @@ func load_score():
 func _ready():
 	randomize()
 	load_score()
+	global = get_node("/root/global")
 	character = get_node("Player")
 	indicator = get_node("DistanceIndicator/VBoxContainer/currentDistance")
+	pause_menu = get_node("PauseMenu")
 	highscore_indicator = get_node("DistanceIndicator/VBoxContainer/bestScore")
 	highscore_indicator.text = str("BEST SCORE: " + str(highscore)) + " m"
 	camera = get_node("Camera2D")
+	settings_instance = settings.instance()
+	if (global.music == true):
+		bgm = get_node("AudioStreamPlayer2D")
+		bgm.play(0)
 
 	get_tree().paused = false
 	laser_instance = laser.instance()
@@ -68,13 +79,13 @@ func _physics_process(delta):
 	platform_instance.reappear(camera, randf()*30+1)
 	
 	if (character.dead == true):
+		bgm.stop()
 		get_tree().paused = true
 		get_node("gameOverMenu/gameOverPopup").show()
 		if ((int(character.position.x)/dist_scale)>highscore):
 			highscore = int(character.position.x)/dist_scale
 		save_score()
 	pass
-	
 
 
 func _on_retryButton_pressed():

@@ -1,8 +1,8 @@
 extends StaticBody2D
 
 onready var topRight = get_node("topRight")
-onready var camera = get_tree().root.get_child(0).get_node("Camera2D")
-onready var groundSpawner = get_tree().root.get_child(0).get_node("GroundSpawner")
+onready var camera = get_tree().root.get_child(1).get_node("Camera2D")
+onready var groundSpawner = get_tree().root.get_child(1).get_node("GroundSpawner")
 
 func _ready():
 	set_process(true)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Tanchiky_--U1J8uMr9UPw.wav-10b73a60f3e001c3a2d2025c0e83e2be.sample"
+
+[deps]
+
+source_file="res://Assets/Tanchiky_--U1J8uMr9UPw.wav"
+dest_files=[ "res://.import/Tanchiky_--U1J8uMr9UPw.wav-10b73a60f3e001c3a2d2025c0e83e2be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

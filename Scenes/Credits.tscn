@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Assets/tempLogo.png" type="Texture" id=2]
 
-[node name="creditsMenu" type="Control" index="0"]
+[node name="creditsMenu" type="Control"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -50,6 +50,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+_sections_unfolded = [ "Rect" ]
 
 [node name="logo" type="TextureRect" parent="CenterContainer/VBoxContainer" index="0"]
 
@@ -87,6 +88,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+_sections_unfolded = [ "Rect" ]
 
 [node name="names" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" index="0"]
 
@@ -205,7 +207,6 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="roles" type="VBoxContainer" parent="CenterContainer/VBoxContainer/HBoxContainer" index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
