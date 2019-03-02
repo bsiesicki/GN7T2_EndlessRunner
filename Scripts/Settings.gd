@@ -6,9 +6,10 @@ onready var global
 
 func _ready():
 	global = get_node("/root/global")
+	global.load_settings()
 	if (global.music == true):
 		get_node("CenterContainer/VBoxContainer/musicButton").text = "MUSIC ON"
-	elif (global.music == false):
+	else:
 		get_node("CenterContainer/VBoxContainer/musicButton").text = "MUSIC OFF"
 	
 

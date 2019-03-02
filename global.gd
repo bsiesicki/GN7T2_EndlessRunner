@@ -1,23 +1,18 @@
 extends Node
 
-var music = true
+var music
 
-var settings = "user://settings.txt"
-
-func _ready():
-	load_settings()
-	pass
+var settings = "user://settings.data"
 
 func load_settings():
     var f = File.new()
     if f.file_exists(settings):
         f.open(settings, File.READ)
-        var content = f.get_as_text()
-        music = bool(content)
+        music = f.get_var()
         f.close()
 		
 func save_settings():
     var f = File.new()
     f.open(settings, File.WRITE)
-    f.store_string(str(music))
+    f.store_var(music)
     f.close()
