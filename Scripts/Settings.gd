@@ -21,9 +21,11 @@ func _on_musicButton_pressed():
 	if ($CenterContainer/VBoxContainer/musicButton.text == "MUSIC ON"):
 		$CenterContainer/VBoxContainer/musicButton.text = "MUSIC OFF"
 		global.music = false
+		global.save_settings()
 	else:
 		$CenterContainer/VBoxContainer/musicButton.text = "MUSIC ON"
 		global.music = true
+		global.save_settings()
 
 
 func _on_creditsButton_pressed():

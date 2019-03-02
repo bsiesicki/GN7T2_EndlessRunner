@@ -79,7 +79,8 @@ func _physics_process(delta):
 	platform_instance.reappear(camera, randf()*30+1)
 	
 	if (character.dead == true):
-		bgm.stop()
+		if (global.music == true):
+			bgm.stop()
 		get_tree().paused = true
 		get_node("gameOverMenu/gameOverPopup").show()
 		if ((int(character.position.x)/dist_scale)>highscore):
