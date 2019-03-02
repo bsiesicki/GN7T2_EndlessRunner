@@ -2,10 +2,14 @@ extends Node
 
 onready var character
 onready var indicator
+onready var highscore_indicator
 onready var laser_instance
 onready var laser_instance2
 onready var camera
 onready var platform_instance
+
+var score_file = "user://highscore.txt"
+var highscore = 0
 
 const dist_scale = 40
 
@@ -14,11 +18,21 @@ var laser_movement_distance = 100
 var platform = preload("res://Scenes/platform.tscn")
 var laser = preload("res://Scenes/laser.tscn")
 
+func load_score():
+    var f = File.new()
+    if f.file_exists(score_file):
+        f.open(score_file, File.READ)
+        var content = f.get_as_text()
+        highscore = int(content)
+        f.close()
 
 func _ready():
 	randomize()
+	load_score()
 	character = get_node("Player")
-	indicator = get_node("DistanceIndicator/Label")
+	indicator = get_node("DistanceIndicator/VBoxContainer/currentDistance")
+	highscore_indicator = get_node("DistanceIndicator/VBoxContainer/bestScore")
+	highscore_indicator.text = str("BEST SCORE: " + str(highscore)) + " m"
 	camera = get_node("Camera2D")
 
 	get_tree().paused = false
@@ -39,7 +53,7 @@ func _ready():
 func _physics_process(delta):
 	#Przemierzony dystans
 	var current_camera_position = camera.position
-	indicator.text = str((int(character.position.x)/dist_scale)) + " m"
+	indicator.text = "CURRENT SCORE: " + str((int(character.position.x)/dist_scale)) + " m"
 	
 	if laser_instance.position < current_camera_position - Vector2(300, 0):
 		laser_movement_distance = 150 - randf()*100
@@ -56,6 +70,9 @@ func _physics_process(delta):
 	if (character.dead == true):
 		get_tree().paused = true
 		get_node("gameOverMenu/gameOverPopup").show()
+		if ((int(character.position.x)/dist_scale)>highscore):
+			highscore = int(character.position.x)/dist_scale
+		save_score()
 	pass
 	
 
@@ -68,4 +85,10 @@ func _on_retryButton_pressed():
 func _on_giveUpButton_pressed():
 	get_tree().paused = false
 	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+	
+func save_score():
+    var f = File.new()
+    f.open(score_file, File.WRITE)
+    f.store_string(str(highscore))
+    f.close()
 
