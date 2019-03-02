@@ -17,15 +17,20 @@ var swiperight = false
 var jumping = false
 var sliding = false
 var falling = false
-#var dashing = false
+var dashing = false
 var running = true
 var onground = true
 var prev_jump_pressed = false
 var slide_start = 0
 var slide_end = 0
+var dash_start = 0
+var dash_end = 0
 export (int) var slide_distance = 120
-export (int) var player_velocity = 200
 export (int) var dash_distance = 120
+export (int) var player_velocity = 150
+export (int) var dash_velocity = 300
+var temp_state 
+var temp_y_velocity = 0
 var velocity = Vector2()
 var elapsed_time = 0    
 var start
@@ -39,6 +44,7 @@ export (int) var swipe_distance = 50
 
 func _ready():
 	$slideCollision.disabled = true
+	$dashCollision.disabled = true
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
@@ -54,7 +60,6 @@ func _input(event):
 			#direction = direction.normalized()
 			swipe_angle = direction.normalized().y
 			swipe_finished = true
-			print(direction, swipe_angle)
 
 func _physics_process(delta):
 	velocity.x = player_velocity
@@ -65,7 +70,6 @@ func _physics_process(delta):
 		swipe_finished = false
 	if direction.y > swipe_distance and swipe_finished == true and swipe_angle > swipe_angle_const:
 		swipedown = true
-		print(swipe_angle)
 		#velocity.y -= JUMP_SPEED
 		swipe_finished = false
 	if direction.x > swipe_distance and swipe_finished == true and swipe_angle < swipe_angle_const/3:
@@ -74,25 +78,22 @@ func _physics_process(delta):
 	velocity.y += GRAVITY  
 	velocity = move_and_slide(velocity, FLOOR)
 	
+	print(get_slide_count())
 	if (get_slide_count()>0):
+		print(get_slide_collision(0).collider.name)
 		if (get_slide_collision(0).collider.name == "KinematicBody2D"):
 			get_tree().paused = true
 
 
-
-
-	#print(onground)
-
 	if (swipeup and onground and !sliding):
-		print("Jump.")
 		velocity.y += JUMP_SPEED
 		jumping = true
 		swipeup = false
 		
 	if (swipedown and onground):
-		print("Slide.")
-		$runCollision.disabled = true
 		$slideCollision.disabled = false
+		$runCollision.disabled = true
+		$dashCollision.disabled = true
 		sliding = true
 		onground = true
 		falling = false
@@ -100,44 +101,71 @@ func _physics_process(delta):
 		running = false
 		swipedown = false
 		slide_start = self.position.x
-		print("Slide start: " + str(slide_start))
 	if (swipedown and !onground):
-		print("SMASH!")
 		velocity.y -= JUMP_SPEED*2
 		falling = true
 		swipedown = false
 	if (swipeup and onground and sliding):
-		print("Slide end test")
 		$runCollision.disabled = false
+		$dashCollision.disabled = true
 		$slideCollision.disabled = true
 		jumping = false
 		sliding = false
 	if (swiperight and onground and !sliding and !jumping and !falling):
-		print("Blink")
-		var blink = Vector2(self.position.x + dash_distance, self.position.y)
-		self.position = blink
+		$dashCollision.disabled = false
+		$runCollision.disabled = true
+		$slideCollision.disabled = true
+		dash_start = self.position.x
+		running = false
+		dashing = true
 		swiperight = false
 	if (swiperight and (jumping or falling)):
-		print("Mid-air Blink")
-		var ma_blink = Vector2(self.position.x + dash_distance, self.position.y)
-		self.position = ma_blink
+		$dashCollision.disabled = false
+		$runCollision.disabled = true
+		$slideCollision.disabled = true
+		dash_start = self.position.x
+		temp_y_velocity = velocity.y
+		if (jumping):
+			temp_state = jumping
+		else:
+			temp_state = falling
+		jumping = false
+		falling = false
+		dashing = true
 		swiperight = false
 	if (swiperight and sliding):
-		var sblink = Vector2(self.position.x + dash_distance, self.position.y)
-		self.position = sblink
+		$runCollision.disabled = true
+		$slideCollision.disabled = true
+		$dashCollision.disabled = false
+		dash_start = self.position.x
+		sliding = false
+		dashing = true
 		swiperight = false
 		sliding = false
-		$runCollision.disabled = false
-		$slideCollision.disabled = true
 		
 	if (sliding):
 		slide_end = (self.position.x)
 		if (slide_end - slide_start > slide_distance):
 			$runCollision.disabled = false
+			$dashCollision.disabled = true
 			$slideCollision.disabled = true
 			sliding = false
-			print("Slide_end: " + str(slide_end))
-			print("Slide distance: " + str(slide_end-slide_start))
+			
+	if (dashing):
+		dash_end = self.position.x
+		player_velocity = dash_velocity
+		velocity.y = 0
+		if (dash_end - dash_start > dash_distance):
+			$runCollision.disabled = false
+			$dashCollision.disabled = true
+			$slideCollision.disabled = true
+			player_velocity = 150
+			velocity.y = temp_y_velocity
+			dashing = false
+			if (temp_state == falling):
+				falling = true
+			elif (temp_state == jumping):
+				jumping = true
 	
 	if velocity.y < 0:
 		jumping = true
@@ -145,12 +173,13 @@ func _physics_process(delta):
 		running = false
 	elif velocity.y > 0:
 		falling = true
+		running = false
 		jumping = false
 	else:
 		falling = false
 		jumping = false
 		
-	if (!jumping and !falling and !sliding):
+	if (!jumping and !falling and !sliding and !dashing):
 		running = true
 		
 	if (is_on_floor()):
@@ -166,6 +195,6 @@ func _physics_process(delta):
 		$PlayerSprite.play("ninjaRun")
 	elif (sliding):
 		$PlayerSprite.play("ninjaSlide")
-#	elif (dashing):
-#		$PlayerSprite.play("ninjaDash")
+	elif (dashing):
+		$PlayerSprite.play("ninjaDash")
 
