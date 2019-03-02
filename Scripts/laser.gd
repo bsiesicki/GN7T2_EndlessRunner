@@ -12,7 +12,6 @@ func _ready(starting_position, vect, starting_distance):
 	distance = starting_distance
 	start_position = self.position
 	vector = vect
-	
 	dest_position = start_position + (distance / 2 * vect.normalized())
 	pass
 

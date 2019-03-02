@@ -145,7 +145,7 @@ JUMP_SPEED = -350
 slide_distance = 120
 dash_distance = 120
 player_velocity = 150
-dash_velocity = 300
+dash_velocity = 450
 swipe_angle_const = 0.75
 swipe_distance = 50
 

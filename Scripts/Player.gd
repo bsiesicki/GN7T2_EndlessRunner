@@ -25,10 +25,11 @@ var slide_start = 0
 var slide_end = 0
 var dash_start = 0
 var dash_end = 0
+var canDash = true
 export (int) var slide_distance = 120
 export (int) var dash_distance = 120
 export (int) var player_velocity = 150
-export (int) var dash_velocity = 300
+export (int) var dash_velocity = 450
 var temp_state 
 var temp_y_velocity = 0
 var velocity = Vector2()
@@ -78,10 +79,9 @@ func _physics_process(delta):
 	velocity.y += GRAVITY  
 	velocity = move_and_slide(velocity, FLOOR)
 	
-	print(get_slide_count())
 	if (get_slide_count()>0):
 		print(get_slide_collision(0).collider.name)
-		if (get_slide_collision(0).collider.name == "KinematicBody2D"):
+		if (get_slide_collision(0).collider.name == "KinematicBody2D" or get_slide_collision(0).collider.name == "@KinematicBody2D@3"):
 			get_tree().paused = true
 
 
@@ -119,7 +119,7 @@ func _physics_process(delta):
 		running = false
 		dashing = true
 		swiperight = false
-	if (swiperight and (jumping or falling)):
+	if (swiperight and (jumping or falling) and canDash):
 		$dashCollision.disabled = false
 		$runCollision.disabled = true
 		$slideCollision.disabled = true
@@ -132,6 +132,7 @@ func _physics_process(delta):
 		jumping = false
 		falling = false
 		dashing = true
+		canDash = false
 		swiperight = false
 	if (swiperight and sliding):
 		$runCollision.disabled = true
@@ -184,6 +185,7 @@ func _physics_process(delta):
 		
 	if (is_on_floor()):
 		onground = true
+		canDash = true
 	else:
 		onground = false
 	

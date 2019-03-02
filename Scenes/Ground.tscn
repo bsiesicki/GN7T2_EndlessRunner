@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 168.564, 29.7822 )
 
-[node name="Ground" type="StaticBody2D"]
+[node name="Ground" type="StaticBody2D" index="0"]
 
 position = Vector2( 0, 161 )
 input_pickable = false
@@ -40,7 +40,8 @@ _sections_unfolded = [ "Offset" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 167.814, 30.9008 )
+position = Vector2( 167.814, 28.375 )
+scale = Vector2( 1, 0.941822 )
 shape = SubResource( 1 )
 
 
