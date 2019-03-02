@@ -25,6 +25,7 @@ var slide_start = 0
 var slide_end = 0
 var dash_start = 0
 var dash_end = 0
+var dead = false
 var canDash = true
 export (int) var slide_distance = 120
 export (int) var dash_distance = 120
@@ -82,7 +83,7 @@ func _physics_process(delta):
 	if (get_slide_count()>0):
 		print(get_slide_collision(0).collider.name)
 		if (get_slide_collision(0).collider.name == "KinematicBody2D" or get_slide_collision(0).collider.name == "@KinematicBody2D@3"):
-			get_tree().paused = true
+			dead = true
 
 
 	if (swipeup and onground and !sliding):

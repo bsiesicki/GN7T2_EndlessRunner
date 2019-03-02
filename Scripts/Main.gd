@@ -21,7 +21,7 @@ func _ready():
 	indicator = get_node("DistanceIndicator/Label")
 	camera = get_node("Camera2D")
 
-	
+	get_tree().paused = false
 	laser_instance = laser.instance()
 	laser_instance._ready(Vector2(900, 90), laser_movement_vector, laser_movement_distance)
 	
@@ -52,4 +52,20 @@ func _physics_process(delta):
 		laser_instance2.reappear(camera.position, laser_movement_vector, laser_movement_distance)
 	
 	platform_instance.reappear(camera, randf()*30+1)
+	
+	if (character.dead == true):
+		get_tree().paused = true
+		get_node("gameOverMenu/gameOverPopup").show()
 	pass
+	
+
+
+func _on_retryButton_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+
+func _on_giveUpButton_pressed():
+	get_tree().paused = false
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+
