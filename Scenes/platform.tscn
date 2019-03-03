@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/platform.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Environment/platforma.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10.1731, 10 )
 
 [node name="StatisBody2D" type="StaticBody2D" index="0"]
 
@@ -31,9 +36,22 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="CollisionUp" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( -0.390624, 1.975 )
-scale = Vector2( 6.29207, 2.20192 )
+position = Vector2( -0.390624, -14.1875 )
+scale = Vector2( 6.29207, 0.552885 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="2"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+
+[node name="CollisionDown" type="CollisionShape2D" parent="KinematicBody2D" index="0"]
+
+position = Vector2( -0.773441, 7.5 )
+scale = Vector2( 5.997, 1.63462 )
+shape = SubResource( 2 )
 
 

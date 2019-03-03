@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/pauseButton.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Tanchiky_--U1J8uMr9UPw.wav" type="AudioStream" id=8]
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 script = ExtResource( 1 )
 
