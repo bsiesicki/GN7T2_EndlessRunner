@@ -47,6 +47,9 @@ export (int) var swipe_distance = 50
 func _ready():
 	$slideCollision.disabled = true
 	$dashCollision.disabled = true
+	$jumpCollision.disabled = true
+	$fallCollision.disabled = true
+	$runCollision.disabled = false
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
@@ -91,11 +94,18 @@ func _physics_process(delta):
 		velocity.y += JUMP_SPEED
 		jumping = true
 		swipeup = false
+		$slideCollision.disabled = true
+		$runCollision.disabled = true
+		$dashCollision.disabled = true
+		$jumpCollision.disabled = false
+		$fallCollision.disabled = true
 		
 	if (swipedown and onground):
 		$slideCollision.disabled = false
 		$runCollision.disabled = true
 		$dashCollision.disabled = true
+		$jumpCollision.disabled = true
+		$fallCollision.disabled = true
 		sliding = true
 		onground = true
 		falling = false
@@ -105,18 +115,27 @@ func _physics_process(delta):
 		slide_start = self.position.x
 	if (swipedown and !onground):
 		velocity.y -= JUMP_SPEED*2
+		$slideCollision.disabled = true
+		$runCollision.disabled = true
+		$dashCollision.disabled = true
+		$jumpCollision.disabled = true
+		$fallCollision.disabled = false
 		falling = true
 		swipedown = false
 	if (swipeup and onground and sliding):
-		$runCollision.disabled = false
+		$runCollision.disabled = true
 		$dashCollision.disabled = true
 		$slideCollision.disabled = true
+		$fallCollision.disabled = true
+		$jumpCollision.disabled = false
 		jumping = false
 		sliding = false
 	if (swiperight and onground and !sliding and !jumping and !falling):
 		$dashCollision.disabled = false
 		$runCollision.disabled = true
 		$slideCollision.disabled = true
+		$fallCollision.disabled = true
+		$jumpCollision.disabled = true
 		dash_start = self.position.x
 		running = false
 		dashing = true
@@ -125,6 +144,8 @@ func _physics_process(delta):
 		$dashCollision.disabled = false
 		$runCollision.disabled = true
 		$slideCollision.disabled = true
+		$jumpCollision.disabled = true
+		$fallCollision.disabled = true
 		dash_start = self.position.x
 		temp_y_velocity = velocity.y
 		if (jumping):
@@ -140,6 +161,8 @@ func _physics_process(delta):
 		$runCollision.disabled = true
 		$slideCollision.disabled = true
 		$dashCollision.disabled = false
+		$fallCollision.disabled = true
+		$jumpCollision.disabled = true
 		dash_start = self.position.x
 		sliding = false
 		dashing = true
@@ -152,6 +175,8 @@ func _physics_process(delta):
 			$runCollision.disabled = false
 			$dashCollision.disabled = true
 			$slideCollision.disabled = true
+			$jumpCollision.disabled = true
+			$fallCollision.disabled = true
 			sliding = false
 			
 	if (dashing):
@@ -162,6 +187,8 @@ func _physics_process(delta):
 			$runCollision.disabled = false
 			$dashCollision.disabled = true
 			$slideCollision.disabled = true
+			$jumpCollision.disabled = true
+			$fallCollision.disabled = true
 			player_velocity = 150
 			velocity.y = temp_y_velocity
 			dashing = false
@@ -174,10 +201,20 @@ func _physics_process(delta):
 		jumping = true
 		sliding = false
 		running = false
+		$runCollision.disabled = true
+		$dashCollision.disabled = true
+		$slideCollision.disabled = true
+		$fallCollision.disabled = true
+		$jumpCollision.disabled = false
 	elif velocity.y > 0:
 		falling = true
 		running = false
 		jumping = false
+		$runCollision.disabled = true
+		$dashCollision.disabled = true
+		$slideCollision.disabled = true
+		$fallCollision.disabled = false
+		$jumpCollision.disabled = true
 	else:
 		falling = false
 		jumping = false

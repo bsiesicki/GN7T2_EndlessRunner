@@ -1,59 +1,59 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Player/Ninja/jump.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Player/Ninja/dash.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00000.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00001.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00002.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00003.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00004.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00005.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00006.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00007.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00008.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00009.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00010.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00011.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00012.png" type="Texture" id=16]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00013.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00014.png" type="Texture" id=18]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00015.png" type="Texture" id=19]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00016.png" type="Texture" id=20]
-[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00017.png" type="Texture" id=21]
-[ext_resource path="res://Assets/Player/Ninja/slide.png" type="Texture" id=22]
-[ext_resource path="res://Assets/Player/Ninja/jump_down.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00000.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00001.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00002.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00003.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00004.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00005.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00006.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00007.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00008.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00009.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00010.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00011.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00012.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00013.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00014.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00015.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00016.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00017.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Player/Ninja/slide.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Player/Ninja/jump_down.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Player/Ninja/dash.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Player/Ninja/jump.png" type="Texture" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "ninjaJump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "ninjaDash",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "ninjaRun",
 "speed": 30.0
 }, {
-"frames": [ ExtResource( 22 ) ],
+"frames": [ ExtResource( 20 ) ],
 "loop": true,
 "name": "ninjaSlide",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 23 ) ],
+"frames": [ ExtResource( 21 ) ],
 "loop": true,
 "name": "ninjaFall",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "ninjaDash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "ninjaJump",
+"speed": 5.0
 } ]
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 scale = Vector2( 0.8, 0.8 )
 input_pickable = false
@@ -75,12 +75,14 @@ swipe_distance = 50
 
 [node name="runCollision" type="CollisionPolygon2D" parent="." index="0"]
 
+visible = false
 position = Vector2( 0, 4 )
 build_mode = 0
 polygon = PoolVector2Array( 7.625, -37.4062, -34.7188, 2.59375, -27.8438, 22.4375, -14.25, 33.2188, 5.125, 34.3125, 24.2813, 22.5312, 11.7813, -5.75, 26.1563, -11.0625 )
 
 [node name="slideCollision" type="CollisionPolygon2D" parent="." index="1"]
 
+visible = false
 position = Vector2( 0.2875, 17.2 )
 scale = Vector2( 2.32225, 2.65724 )
 build_mode = 0
@@ -89,15 +91,30 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="dashCollision" type="CollisionPolygon2D" parent="." index="2"]
 
+visible = false
 scale = Vector2( 0.15, 0.15 )
 build_mode = 0
 polygon = PoolVector2Array( -94.375, 19.5833, -2.70831, -62.7083, 69.1667, -55.4167, 85.8334, -100.208, 137.917, -91.875, 124.375, -16.875, 188.958, -21.0417, 140, 44.5833, 95.2084, 22.7083, 30.625, 67.5, 84.7917, 115.417, 35.8334, 214.375, 77.5, 239.375, -12.0833, 245.625, 20.2084, 136.25, -16.25, 113.333, -26.6666, 167.5, -111.042, 210.208, -106.875, 255, -165.208, 202.917, -68.3333, 131.042, -50.625, 35.2083 )
 
-[node name="PlayerSprite" type="AnimatedSprite" parent="." index="3"]
+[node name="fallCollision" type="CollisionPolygon2D" parent="." index="3"]
+
+visible = false
+scale = Vector2( 0.15, 0.15 )
+build_mode = 0
+polygon = PoolVector2Array( 0.625006, -231.875, -18.6458, -221.979, -81.6667, -82.9167, -113.437, 43.6458, -46.7708, 84.2708, -126.979, 135.833, -53.0208, 178.021, -72.2917, 140.521, -7.18749, 110.833, -3.02083, 182.708, 79.2708, 187.396, 29.7917, 152.5, 33.9583, 41.5625, -36.3542, 17.6042, 1.14584, -70.9375, 45.4167, -118.333, 58.9583, -206.875, 30.8333, -214.167, 10.5208, -162.604, -8.22916, -168.854, 14.6875, -223.542 )
+
+[node name="jumpCollision" type="CollisionPolygon2D" parent="." index="4"]
+
+visible = false
+scale = Vector2( 0.15, 0.15 )
+build_mode = 0
+polygon = PoolVector2Array( 33.9583, -183.958, 8.95834, -165.729, 6.35417, -121.979, -68.6458, -106.354, -133.75, -17.8125, -102.5, 3.54166, -48.8542, -81.3542, -23.8542, -79.7917, -81.6667, 91.5625, -174.896, 117.083, -214.479, 185.312, -18.125, 117.604, 29.7917, 154.062, 18.8542, 103.542, 95.9375, 34.7917, 95.9375, 3.54166, 26.6667, -2.18751, 52.1875, -65.2083, 92.8125, -65.2083, 185, -120.417, 174.583, -149.583, 80.8333, -96.4583, 43.3333, -101.146, 63.6458, -113.125, 66.7708, -169.375 )
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="." index="5"]
 
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 1 )
-animation = "ninjaDash"
+animation = "ninjaRun"
 _sections_unfolded = [ "Transform" ]
 
 
