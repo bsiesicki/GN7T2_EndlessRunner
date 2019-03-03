@@ -21,3 +21,8 @@ func _on_restartButton_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
+
+
+func _on_quitButton_pressed():
+	get_tree().paused = false
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
