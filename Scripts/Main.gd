@@ -4,21 +4,27 @@ onready var character
 onready var indicator
 onready var highscore_indicator
 onready var pause_menu
-onready var laser_instance
-onready var laser_instance2
+onready var object0
+onready var object1
+onready var object2
+onready var object3
+onready var object4
+onready var object5
 onready var camera
 onready var platform_instance
 onready var bgm
 onready var settings_instance
 onready var global
 
-var score_file = "user://highscore.txt"
-var highscore = 0
-
+const laser_movement_speed_decreaser = 50000
+const object_spawn_distance = 200
 const dist_scale = 40
 
-var laser_movement_vector = Vector2(0,0)
-var laser_movement_distance = 100
+var current_camera_position
+var score_file = "user://highscore.txt"
+var highscore = 0
+var object_movement_vector = Vector2(0,0)
+var object_movement_distance = 100
 var platform = preload("res://Scenes/platform.tscn")
 var laser = preload("res://Scenes/laser.tscn")
 var settings = preload("res://Scenes/Settings.tscn")
@@ -31,7 +37,16 @@ func load_score():
         highscore = int(content)
         f.close()
 
+func random_object():
+	var rand = randf()
+	if(rand > 0.25):
+		return laser.instance()
+	else:
+		return platform.instance()
+	pass
+	
 func _ready():
+	get_tree().paused = false
 	randomize()
 	load_score()
 	global = get_node("/root/global")
@@ -44,41 +59,91 @@ func _ready():
 	camera = get_node("Camera2D")
 	settings_instance = settings.instance()
 	if (global.music == true):
-		bgm = get_node("AudioStreamPlayer2D")
+		bgm = get_node("Camera2D/AudioStreamPlayer2D")
 		bgm.volume_db = -30
 		bgm.play(0)
-
-	get_tree().paused = false
-	laser_instance = laser.instance()
-	laser_instance._ready(Vector2(900, 90), laser_movement_vector, laser_movement_distance)
+		
+	object0 = platform.instance()
+	object0.position = Vector2(500,130)
 	
-	laser_instance2 = laser.instance()
-	laser_instance2._ready(Vector2(1200, 110), laser_movement_vector, laser_movement_distance)
+	object1 = laser.instance()
+	object1._ready(Vector2(900, 90), object_movement_vector, object_movement_distance)
 	
-	platform_instance = platform.instance()
-	platform_instance.position = Vector2(500 ,130)
+	object2 = laser.instance()
+	object2._ready(Vector2(1200, 70), Vector2(0,0.9), object_movement_distance)
 
-	self.add_child(platform_instance)
-	self.add_child(laser_instance)
-	self.add_child(laser_instance2)
-	pass
+	object3 = random_object()
+	object4 = random_object()
+	object5 = random_object()
+	
+	object3._ready(object2.position+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+	object4._ready(object3.position+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+	object5._ready(object4.position+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+	
+	self.add_child(object0)
+	self.add_child(object1)
+	self.add_child(object2)
+	self.add_child(object3)
+	self.add_child(object4)
+	self.add_child(object5)
 
 func _physics_process(delta):
 	#Przemierzony dystans
-	var current_camera_position = camera.position
+	current_camera_position = camera.position
+		
 	indicator.text = "CURRENT SCORE: " + str((int(character.position.x)/dist_scale)) + " m"
 	
-	if laser_instance.position < current_camera_position - Vector2(300, 0):
-		laser_movement_distance = 150 - randf()*100
-		laser_movement_vector = current_camera_position.x / 100000 * Vector2(randf()*2-1,randf()*2-1)
-		laser_instance.reappear(camera.position, laser_movement_vector, laser_movement_distance)
+	if object0.position.x < current_camera_position.x - 300:
+		object0.queue_free()
+		object_movement_distance = rand_range(50,150)
+		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
+		object0 = random_object()
+		object0.reappear(Vector2(object5.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		add_child(object0)
+		print(object0.position)
+
 	
-	if laser_instance2.position < current_camera_position - Vector2(300, 0):
-		laser_movement_distance = 150 - randf()*100
-		laser_movement_vector = current_camera_position.x / 100000 * Vector2(randf()*2-1,randf()*2-1)
-		laser_instance2.reappear(camera.position, laser_movement_vector, laser_movement_distance)
+	if object1.position.x < current_camera_position.x - 300:
+		object1.queue_free()
+		object_movement_distance = rand_range(50,150)
+		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
+		object1 = random_object()
+		object1.reappear(Vector2(object0.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		add_child(object1)
+		
+	if object2.position.x < current_camera_position.x - 300:
+		object2.queue_free()
+		object_movement_distance = rand_range(50,150)
+		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
+		object2 = random_object()
+		object2.reappear(Vector2(object1.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		add_child(object2)
+		
+	if object3.position.x < current_camera_position.x - 300:
+		object3.queue_free()
+		object_movement_distance = rand_range(50,150)
+		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
+		object3 = random_object()
+		object3.reappear(Vector2(object2.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		add_child(object3)
 	
-	platform_instance.reappear(camera, randf()*30+1)
+	if object4.position.x < current_camera_position.x - 300:
+		object4.queue_free()
+		object_movement_distance = rand_range(50,150)
+		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
+		object4 = random_object()
+		object4.reappear(Vector2(object3.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		add_child(object4)
+	
+	if object5.position.x < current_camera_position.x - 300:
+		object5.queue_free()
+		object_movement_distance = rand_range(50,150)
+		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
+		object5 = random_object()
+		object5.reappear(Vector2(object4.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		add_child(object5)
+	
+	
 	
 	if (character.dead == true):
 		if (global.music == true):
@@ -89,9 +154,11 @@ func _physics_process(delta):
 			highscore = int(character.position.x)/dist_scale
 		save_score()
 	pass
+	
 	###################################Tutorial 1 trigger
 #	if (int(character.position.x) == 350):
 #		startTut1()
+
 
 func _on_retryButton_pressed():
 	get_tree().paused = false

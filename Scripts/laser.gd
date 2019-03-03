@@ -15,14 +15,14 @@ func _ready(starting_position, vect, starting_distance):
 	dest_position = start_position + (distance / 2 * vect.normalized())
 	pass
 
-func reappear(current_camera_position, vect, dist):
-	self.position = current_camera_position + Vector2(170 + randf()*100-1, randf()*100-50)
+func reappear(new_position, vect, dist):
+	self.position = new_position + Vector2(0, rand_range(-10,50))
 	start_position = position
 	vector = vect
 	distance = dist
 	dest_position = start_position + (distance / 2 * vector.normalized())
 	self.rotation = randf()*90
-	rotation_rate += 0.01
+	rotation_rate += 0.05
 	
 
 func _process(delta):
