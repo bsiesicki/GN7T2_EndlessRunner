@@ -85,6 +85,12 @@ func _physics_process(delta):
 	
 	if (get_slide_count()>0):
 		var collider = get_slide_collision(0).collider
+		print("Collider: " + str(collider.name))
+		if (get_slide_collision(1) != null):
+			var collider2 = get_slide_collision(1).collider
+			print("Collider2: " + str(collider2.name))
+			if (collider2.is_class("KinematicBody2D")):
+				dead = true
 		if (collider.is_class("KinematicBody2D")):
 			dead = true
 
@@ -196,7 +202,6 @@ func _physics_process(delta):
 				falling = true
 			elif (temp_state == jumping):
 				jumping = true
-	print(velocity.y)
 	
 	if (velocity.y < 0 and !onground):
 		jumping = true
