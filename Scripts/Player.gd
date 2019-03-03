@@ -33,6 +33,9 @@ var elapsed_time = 0
 var start
 var speed
 var swipe_angle
+#var dash_disabled = true
+#var slide_disabled = true
+#var jump_disabled = true
 
 var direction = Vector2()
 export (float) var swipe_angle_const = 0.75
@@ -77,7 +80,8 @@ func _physics_process(delta):
 		swipe_finished = false
 #	if(swipe != BLANK):
 #		print(swipe)
-		
+	
+	#if (swipe == DOWN and !slide_disabled):
 	if (swipe == DOWN):
 		if (state == RUNNING):
 			state = SLIDING
@@ -89,12 +93,14 @@ func _physics_process(delta):
 			state = FALLING
 		swipe = BLANK
 
+	#if (swipe == UP and !jump_disabled):
 	if (swipe == UP):
 		if (state == RUNNING or state == SLIDING):
 			velocity.y += JUMP_SPEED
 			state = JUMPING
 		swipe = BLANK
 		
+	#if (swipe == RIGHT and !dash_disabled):
 	if (swipe == RIGHT):
 		if(canDash):
 			dash_start = self.position.x

@@ -89,7 +89,9 @@ func _physics_process(delta):
 			highscore = int(character.position.x)/dist_scale
 		save_score()
 	pass
-
+	###################################Tutorial 1 trigger
+#	if (int(character.position.x) == 350):
+#		startTut1()
 
 func _on_retryButton_pressed():
 	get_tree().paused = false
@@ -106,3 +108,13 @@ func save_score():
     f.store_string(str(highscore))
     f.close()
 
+#######################################Tutorial 1 funcion
+#func startTut1():
+#	get_tree().paused = true
+#	get_node("jumpTut/Container").show()
+#	get_node("jumpTut/Container/swipeUp/swipeUpAnim").play()
+#	if (character.swipe == UP):
+#		character.jump_disabled = false
+#		get_tree().paused = false
+#		get_node("jumpTut/Container").hide()
+#		get_node("jumpTut/Container/swipeUp/swipeUpAnim").stop()

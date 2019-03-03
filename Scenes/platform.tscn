@@ -13,7 +13,7 @@ extents = Vector2( 10, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 10.1731, 10 )
 
-[node name="StatisBody2D" type="StaticBody2D" index="0"]
+[node name="StatisBody2D" type="StaticBody2D"]
 
 scale = Vector2( 0.8, 0.5 )
 input_pickable = false
