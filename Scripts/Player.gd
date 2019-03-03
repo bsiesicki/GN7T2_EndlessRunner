@@ -137,37 +137,37 @@ func _physics_process(delta):
 		
 	if (state == JUMPING):
 		$PlayerSprite.play("ninjaJump")
-		$slideCollision.disabled = false
-		$dashCollision.disabled = false
-		$jumpCollision.disabled = true
-		$fallCollision.disabled = false
-		$runCollision.disabled = false
-	elif (state == FALLING):
-		$PlayerSprite.play("ninjaFall")
-		$slideCollision.disabled = false
-		$dashCollision.disabled = false
-		$jumpCollision.disabled = false
-		$fallCollision.disabled = true
-		$runCollision.disabled = false
-	elif (state == RUNNING):
-		$PlayerSprite.play("ninjaRun")
-		$slideCollision.disabled = false
-		$dashCollision.disabled = false
-		$jumpCollision.disabled = false
-		$fallCollision.disabled = false
-		$runCollision.disabled = true
-	elif (state == SLIDING):
-		$PlayerSprite.play("ninjaSlide")
 		$slideCollision.disabled = true
-		$dashCollision.disabled = false
-		$jumpCollision.disabled = false
-		$fallCollision.disabled = false
-		$runCollision.disabled = false
-	elif (state == DASHING):
-		$PlayerSprite.play("ninjaDash")
-		$slideCollision.disabled = false
 		$dashCollision.disabled = true
 		$jumpCollision.disabled = false
+		$fallCollision.disabled = true
+		$runCollision.disabled = true
+	elif (state == FALLING):
+		$PlayerSprite.play("ninjaFall")
+		$slideCollision.disabled = true
+		$dashCollision.disabled = true
+		$jumpCollision.disabled = true
 		$fallCollision.disabled = false
+		$runCollision.disabled = true
+	elif (state == RUNNING):
+		$PlayerSprite.play("ninjaRun")
+		$slideCollision.disabled = true
+		$dashCollision.disabled = true
+		$jumpCollision.disabled = true
+		$fallCollision.disabled = true
 		$runCollision.disabled = false
+	elif (state == SLIDING):
+		$dashCollision.disabled = true
+		$jumpCollision.disabled = true
+		$fallCollision.disabled = true
+		$runCollision.disabled = true
+		$slideCollision.disabled = false
+		$PlayerSprite.play("ninjaSlide")
+	elif (state == DASHING or state ==SKYDASHING):
+		$PlayerSprite.play("ninjaDash")
+		$slideCollision.disabled = true
+		$dashCollision.disabled = false
+		$jumpCollision.disabled = true
+		$fallCollision.disabled = true
+		$runCollision.disabled = true
 		
