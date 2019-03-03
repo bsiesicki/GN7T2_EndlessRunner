@@ -53,7 +53,7 @@ func _ready():
 	laser_instance._ready(Vector2(900, 90), laser_movement_vector, laser_movement_distance)
 	
 	laser_instance2 = laser.instance()
-	laser_instance2._ready(Vector2(1200, 100), laser_movement_vector, laser_movement_distance)
+	laser_instance2._ready(Vector2(1200, 110), laser_movement_vector, laser_movement_distance)
 	
 	platform_instance = platform.instance()
 	platform_instance.position = Vector2(500 ,130)
