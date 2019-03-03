@@ -196,8 +196,9 @@ func _physics_process(delta):
 				falling = true
 			elif (temp_state == jumping):
 				jumping = true
+	print(velocity.y)
 	
-	if velocity.y < 0:
+	if (velocity.y < 0 and !onground):
 		jumping = true
 		sliding = false
 		running = false
@@ -206,7 +207,7 @@ func _physics_process(delta):
 		$slideCollision.disabled = true
 		$fallCollision.disabled = true
 		$jumpCollision.disabled = false
-	elif velocity.y > 0:
+	elif (velocity.y > 0 and !onground):
 		falling = true
 		running = false
 		jumping = false
