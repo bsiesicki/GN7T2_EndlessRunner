@@ -22,8 +22,8 @@ var dash_start = 0
 var dash_end = 0
 var dead = false
 var canDash = true
-export (int) var slide_distance = 120
-export (int) var dash_distance = 120
+export (int) var slide_distance = 140
+export (int) var dash_distance = 130
 export (int) var player_velocity = 150
 export (int) var dash_velocity = 450
 var temp_state 
