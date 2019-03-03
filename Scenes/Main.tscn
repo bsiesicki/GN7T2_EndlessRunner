@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/pauseButton.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Tanchiky_--U1J8uMr9UPw.wav" type="AudioStream" id=8]
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -298,7 +298,6 @@ _sections_unfolded = [ "Rect" ]
 [node name="gameOverMenu" type="CanvasLayer" parent="." index="5"]
 
 pause_mode = 2
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
