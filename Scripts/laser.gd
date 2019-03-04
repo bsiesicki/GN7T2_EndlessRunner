@@ -7,12 +7,16 @@ var vector
 var collision
 var distance
 
-func _ready(starting_position, vect, starting_distance):
+func _ready(starting_position, vect, starting_distance, rot=0):
 	self.position = starting_position
 	distance = starting_distance
 	start_position = self.position
 	vector = vect
 	dest_position = start_position + (distance / 2 * vect.normalized())
+	if(rot == 0):
+		rotation = PI/2 * randf()
+	else:
+		rotation = rot
 	pass
 
 func reappear(new_position, vect, dist):
@@ -21,7 +25,7 @@ func reappear(new_position, vect, dist):
 	vector = vect
 	distance = dist
 	dest_position = start_position + (distance / 2 * vector.normalized())
-	self.rotation = rand_range(0,90)
+	self.rotation = randf()*(PI/2)
 	rotation_rate += 0.05
 	
 
