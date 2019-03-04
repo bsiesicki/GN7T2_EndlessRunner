@@ -16,12 +16,12 @@ func _ready(starting_position, vect, starting_distance):
 	pass
 
 func reappear(new_position, vect, dist):
-	self.position = new_position + Vector2(0, rand_range(-10,50))
+	self.position = new_position + Vector2(0, rand_range(-10,30))
 	start_position = position
 	vector = vect
 	distance = dist
 	dest_position = start_position + (distance / 2 * vector.normalized())
-	self.rotation = randf()*90
+	self.rotation = rand_range(0,90)
 	rotation_rate += 0.05
 	
 

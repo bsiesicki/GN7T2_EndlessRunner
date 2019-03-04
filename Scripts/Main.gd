@@ -39,7 +39,7 @@ func load_score():
 
 func random_object():
 	var rand = randf()
-	if(rand > 0.25):
+	if(rand > 0.2):
 		return laser.instance()
 	else:
 		return platform.instance()
@@ -93,54 +93,28 @@ func _physics_process(delta):
 		
 	indicator.text = "CURRENT SCORE: " + str((int(character.position.x)/dist_scale)) + " m"
 	
-	if object0.position.x < current_camera_position.x - 300:
-		object0.queue_free()
-		object_movement_distance = rand_range(50,150)
-		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
-		object0 = random_object()
-		object0.reappear(Vector2(object5.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+	if object0.position.x < current_camera_position.x - 299:
+		object0 = manage_object(object5.position, object0)
 		add_child(object0)
-		print(object0.position)
-
 	
 	if object1.position.x < current_camera_position.x - 300:
-		object1.queue_free()
-		object_movement_distance = rand_range(50,150)
-		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
-		object1 = random_object()
-		object1.reappear(Vector2(object0.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		object1 = manage_object(object0.position, object0)
 		add_child(object1)
 		
 	if object2.position.x < current_camera_position.x - 300:
-		object2.queue_free()
-		object_movement_distance = rand_range(50,150)
-		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
-		object2 = random_object()
-		object2.reappear(Vector2(object1.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		object2 = manage_object(object1.position, object0)
 		add_child(object2)
 		
 	if object3.position.x < current_camera_position.x - 300:
-		object3.queue_free()
-		object_movement_distance = rand_range(50,150)
-		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
-		object3 = random_object()
-		object3.reappear(Vector2(object2.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		object3 = manage_object(object2.position, object0)
 		add_child(object3)
 	
 	if object4.position.x < current_camera_position.x - 300:
-		object4.queue_free()
-		object_movement_distance = rand_range(50,150)
-		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
-		object4 = random_object()
-		object4.reappear(Vector2(object3.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		object4 = manage_object(object3.position, object0)
 		add_child(object4)
 	
 	if object5.position.x < current_camera_position.x - 300:
-		object5.queue_free()
-		object_movement_distance = rand_range(50,150)
-		object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
-		object5 = random_object()
-		object5.reappear(Vector2(object4.position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+		object5 = manage_object(object4.position, object0)
 		add_child(object5)
 	
 	
@@ -158,7 +132,12 @@ func _physics_process(delta):
 	###################################Tutorial 1 trigger
 #	if (int(character.position.x) == 350):
 #		startTut1()
-
+func manage_object(position, objectx):
+	object_movement_distance = rand_range(50,150)
+	object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
+	objectx = random_object()
+	objectx.reappear(Vector2(position.x,90)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+	return objectx
 
 func _on_retryButton_pressed():
 	get_tree().paused = false

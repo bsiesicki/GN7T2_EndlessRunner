@@ -1,20 +1,29 @@
 extends KinematicBody2D
 
-
 const GRAVITY = 10
-export (int) var JUMP_SPEED = -350
 const JUMP_MAX_AIRBORNE_TIME = 0.2
 const FLOOR = Vector2(0, -1)
 
 enum State {RUNNING, SLIDING, JUMPING, FALLING, DASHING, SKYDASHING}
 enum Swipe {LEFT, RIGHT, UP, DOWN, BLANK}
 
-
-var on_air_time = 100
-
+export (float) var swipe_angle_const = 0.75
+export (int) var swipe_distance = 50
+export (int) var on_air_time = 100
+export (int) var slide_distance = 140
+export (int) var dash_distance = 130
+export (int) var player_velocity = 150
+export (int) var dash_velocity = 450
+export (int) var JUMP_SPEED = -350
 export (State) var state = RUNNING
 export (Swipe) var swipe = BLANK
 
+var velocity = Vector2()
+var elapsed_time = 0    
+var start
+var swipe_angle
+var swipe_finished = false
+var direction = Vector2()
 var prev_jump_pressed = false
 var slide_start = 0
 var slide_end = 0
@@ -22,25 +31,7 @@ var dash_start = 0
 var dash_end = 0
 var dead = false
 var canDash = true
-export (int) var slide_distance = 140
-export (int) var dash_distance = 130
-export (int) var player_velocity = 150
-export (int) var dash_velocity = 450
-var temp_state 
-var temp_y_velocity = 0
-var velocity = Vector2()
-var elapsed_time = 0    
-var start
-var speed
-var swipe_angle
-#var dash_disabled = true
-#var slide_disabled = true
-#var jump_disabled = true
 
-var direction = Vector2()
-export (float) var swipe_angle_const = 0.75
-var swipe_finished = false
-export (int) var swipe_distance = 50
 
 func _ready():
 	$slideCollision.disabled = true
@@ -62,13 +53,10 @@ func _physics_process(delta):
 
 	velocity = move_and_slide(velocity, FLOOR)
 	
-	if (get_slide_count()>0):
-		var collider = get_slide_collision(0).collider
-		if (collider.is_class("KinematicBody2D")):
-			dead = true
-		if (get_slide_collision(1) != null):
-			var collider2 = get_slide_collision(1).collider
-			if (collider2.is_class("KinematicBody2D")):
+	if (get_slide_count()!=0):
+		for i in range (0,get_slide_count()) :
+			var collider = get_slide_collision(i).collider
+			if (collider.is_class("KinematicBody2D")):
 				dead = true
 
 
