@@ -1,10 +1,10 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Player/Ninja/dash.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Player/Ninja/slide.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Player/Ninja/jump_down.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Player/Ninja/jump.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player/Ninja/jump_down.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player/Ninja/jump.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/Ninja/dash.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player/Ninja/slide.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00000.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00001.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00002.png" type="Texture" id=8]
@@ -29,22 +29,22 @@
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "ninjaDash",
+"name": "ninjaFall",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "ninjaSlide",
+"name": "ninjaJump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "ninjaFall",
+"name": "ninjaDash",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "ninjaJump",
+"name": "ninjaSlide",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
@@ -53,7 +53,7 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 0, -0.0625 )
 scale = Vector2( 0.8, 0.8 )
