@@ -59,8 +59,8 @@ func _ready():
 	camera = get_node("Camera2D")
 	settings_instance = settings.instance()
 	if (global.music == true):
-		bgm = get_node("Camera2D/AudioStreamPlayer2D")
-		bgm.volume_db = -30
+		bgm = get_node("Camera2D/bgm")
+		bgm.volume_db = -30.0
 		bgm.play(0)
 		
 	object0 = platform.instance()
