@@ -7,8 +7,6 @@ const FLOOR = Vector2(0, -1)
 enum State {RUNNING, SLIDING, JUMPING, FALLING, DASHING, SKYDASHING}
 enum Swipe {LEFT, RIGHT, UP, DOWN, BLANK}
 
-export (float) var swipe_angle_const = 0.75
-export (int) var swipe_distance = 50
 export (int) var on_air_time = 100
 export (int) var slide_distance = 140
 export (int) var dash_distance = 130
@@ -20,10 +18,6 @@ export (Swipe) var swipe = BLANK
 
 var velocity = Vector2()
 var elapsed_time = 0    
-var start
-var swipe_angle
-var swipe_finished = false
-var direction = Vector2()
 var prev_jump_pressed = false
 var slide_start = 0
 var slide_end = 0
@@ -32,25 +26,19 @@ var dash_end = 0
 var dead = false
 var canDash = true
 
+func pause(x):
+	 self.set_physics_process(x)
 
 func _ready():
 	$slideCollision.disabled = true
 	$dashCollision.disabled = true
 	velocity.x = player_velocity
-	pass
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			start = event.position
-		else:
-			direction = event.position - start
-			swipe_angle = direction.normalized().y
-			swipe_finished = true
-
+func set_swipe(swipe_dir):
+	swipe = swipe_dir
+	
 func _physics_process(delta):
 	elapsed_time += delta
-
 	velocity = move_and_slide(velocity, FLOOR)
 	
 	if (get_slide_count()!=0):
@@ -58,43 +46,24 @@ func _physics_process(delta):
 			var collider = get_slide_collision(i).collider
 			if (collider.is_class("KinematicBody2D")):
 				dead = true
-				
 
-
-	if direction.y < -swipe_distance and swipe_finished == true and swipe_angle < -swipe_angle_const:
-		swipe = UP
-		swipe_finished = false
-
-	elif direction.y > swipe_distance and swipe_finished == true and swipe_angle > swipe_angle_const:
-		swipe = DOWN
-		swipe_finished = false
-
-	elif direction.x > swipe_distance and swipe_finished == true and swipe_angle < swipe_angle_const/3:
-		swipe = RIGHT
-		swipe_finished = false
-#	if(swipe != BLANK):
-#		print(swipe)
-	
-	#if (swipe == DOWN and !slide_disabled):
 	if (swipe == DOWN):
 		if (state == RUNNING):
 			state = SLIDING
 			slide_start = self.position.x
-		
+
 		elif (state == JUMPING or state == SKYDASHING):
 			velocity.y -= JUMP_SPEED*2
 			velocity.x = player_velocity
 			state = FALLING
 		swipe = BLANK
 
-	#if (swipe == UP and !jump_disabled):
 	if (swipe == UP):
 		if (state == RUNNING or state == SLIDING):
 			velocity.y += JUMP_SPEED
 			state = JUMPING
 		swipe = BLANK
-		
-	#if (swipe == RIGHT and !dash_disabled):
+
 	if (swipe == RIGHT):
 		if(canDash):
 			dash_start = self.position.x
@@ -104,13 +73,12 @@ func _physics_process(delta):
 			else:
 				state = DASHING
 		swipe = BLANK
-		
+
 	if (state == SLIDING):
 		slide_end = self.position.x
 		if (slide_end - slide_start > slide_distance):
-
 			state = RUNNING
-			
+
 	elif (state == DASHING or state == SKYDASHING):
 		dash_end = self.position.x
 		velocity.x = dash_velocity
@@ -134,7 +102,7 @@ func _physics_process(delta):
 			state = RUNNING
 	else:
 		velocity.y += GRAVITY 
-		
+
 	if (state == JUMPING):
 		$PlayerSprite.play("ninjaJump")
 		$slideCollision.disabled = true
@@ -170,4 +138,3 @@ func _physics_process(delta):
 		$jumpCollision.disabled = true
 		$fallCollision.disabled = true
 		$runCollision.disabled = true
-		
