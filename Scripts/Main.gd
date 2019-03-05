@@ -117,9 +117,8 @@ func _physics_process(delta):
 		object5 = manage_object(object4.position, object0)
 		add_child(object5)
 	
-	
-	
 	if (character.dead == true):
+		play_dead()
 		if (global.music == true):
 			bgm.volume_db = -40.0
 		get_tree().paused = true
@@ -127,7 +126,6 @@ func _physics_process(delta):
 		if ((int(character.position.x)/dist_scale)>highscore):
 			highscore = int(character.position.x)/dist_scale
 		save_score()
-	pass
 	
 	###################################Tutorial 1 trigger
 #	if (int(character.position.x) == 350):
@@ -153,6 +151,11 @@ func save_score():
     f.open(score_file, File.WRITE)
     f.store_string(str(highscore))
     f.close()
+	
+func play_dead():
+	character.get_node("PlayerSprite").hide()
+	character.get_node("DeathSprite").show()
+	character.get_node("DeathSprite").play("ninjaDeath")
 
 #######################################Tutorial 1 funcion
 #func startTut1():

@@ -58,6 +58,7 @@ func _physics_process(delta):
 			var collider = get_slide_collision(i).collider
 			if (collider.is_class("KinematicBody2D")):
 				dead = true
+				
 
 
 	if direction.y < -swipe_distance and swipe_finished == true and swipe_angle < -swipe_angle_const:
