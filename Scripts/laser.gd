@@ -7,6 +7,9 @@ var vector
 var collision
 var distance
 
+func pause(x):
+	 self.set_physics_process(x)
+
 func _ready(starting_position, vect, starting_distance, rot=0):
 	self.position = starting_position
 	distance = starting_distance
@@ -29,7 +32,7 @@ func reappear(new_position, vect, dist):
 	rotation_rate += 0.05
 	
 
-func _process(delta):
+func _physics_process(delta):
 	if(self.start_position.x < dest_position.x):
 		if(self.position.x > dest_position.x):
 			vector = Vector2(-vector.x, vector.y)

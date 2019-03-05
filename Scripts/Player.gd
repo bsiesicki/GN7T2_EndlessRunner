@@ -4,7 +4,7 @@ const GRAVITY = 10
 const JUMP_MAX_AIRBORNE_TIME = 0.2
 const FLOOR = Vector2(0, -1)
 
-enum State {RUNNING, SLIDING, JUMPING, FALLING, DASHING, SKYDASHING}
+enum State {RUNNING, SLIDING, JUMPING, FALLING, DASHING, SKYDASHING, STOP}
 enum Swipe {LEFT, RIGHT, UP, DOWN, BLANK}
 
 export (int) var on_air_time = 100
@@ -27,11 +27,18 @@ var dead = false
 var canDash = true
 
 func pause(x):
-	 self.set_physics_process(x)
+	self.set_physics_process(x)
+	if(x == false):
+		$PlayerSprite.stop()
+	else:
+		$PlayerSprite.play('ninjaRun')
+
+	
 
 func _ready():
 	$slideCollision.disabled = true
 	$dashCollision.disabled = true
+	$PlayerSprite.play('ninjaFall')
 	velocity.x = player_velocity
 
 func set_swipe(swipe_dir):
@@ -104,21 +111,24 @@ func _physics_process(delta):
 		velocity.y += GRAVITY 
 
 	if (state == JUMPING):
-		$PlayerSprite.play("ninjaJump")
+		if($PlayerSprite.is_playing()):
+			$PlayerSprite.play("ninjaJump")
 		$slideCollision.disabled = true
 		$dashCollision.disabled = true
 		$jumpCollision.disabled = false
 		$fallCollision.disabled = true
 		$runCollision.disabled = true
 	elif (state == FALLING):
-		$PlayerSprite.play("ninjaFall")
+		if($PlayerSprite.is_playing()):
+			$PlayerSprite.play("ninjaFall")
 		$slideCollision.disabled = true
 		$dashCollision.disabled = true
 		$jumpCollision.disabled = true
 		$fallCollision.disabled = false
 		$runCollision.disabled = true
 	elif (state == RUNNING):
-		$PlayerSprite.play("ninjaRun")
+		if($PlayerSprite.is_playing()):
+			$PlayerSprite.play("ninjaRun")
 		$slideCollision.disabled = true
 		$dashCollision.disabled = true
 		$jumpCollision.disabled = true
@@ -130,9 +140,11 @@ func _physics_process(delta):
 		$fallCollision.disabled = true
 		$runCollision.disabled = true
 		$slideCollision.disabled = false
-		$PlayerSprite.play("ninjaSlide")
+		if($PlayerSprite.is_playing()):
+			$PlayerSprite.play("ninjaSlide")
 	elif (state == DASHING or state ==SKYDASHING):
-		$PlayerSprite.play("ninjaDash")
+		if($PlayerSprite.is_playing()):
+			$PlayerSprite.play("ninjaDash")
 		$slideCollision.disabled = true
 		$dashCollision.disabled = false
 		$jumpCollision.disabled = true

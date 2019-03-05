@@ -72,13 +72,15 @@ func _ready():
 	object1._ready(Vector2(900, 90), object_movement_vector, object_movement_distance,PI)
 	
 	object2 = laser.instance()
-	object2._ready(Vector2(1200, 80), Vector2(0,0.95), object_movement_distance, PI/2)
+	object2._ready(Vector2(1200, 90), Vector2(0,1.1), object_movement_distance + 40, PI/2)
 
-	object3 = random_object()
+	object3 = laser.instance()
+	object3._ready(Vector2(1400, 50), Vector2(0,0), object_movement_distance , PI)
+	
 	object4 = random_object()
 	object5 = random_object()
 	
-	object3._ready(object2.position+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+
 	object4._ready(object3.position+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
 	object5._ready(object4.position+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
 	
@@ -161,6 +163,11 @@ func _physics_process(delta):
 			start_slide_tutorial()
 		if (int(character.position.x) == 1100):
 			start_dash_tutorial()
+		if (int(character.position.x) == 1300):
+			character.set_swipe(Swipe.UP)
+		if (int(character.position.x) == 1350):
+			start_slam_tutorial()
+			
 
 func manage_object(position, objectx):
 	object_movement_distance = rand_range(50,150)
@@ -204,13 +211,26 @@ func start_slide_tutorial():
 
 func start_dash_tutorial():
 	character.pause(false)
+	object2.pause(false)
 	get_node("dashTut/Container").show()
 	get_node("dashTut/Container/swipeRight/swipeRightAnim").play()
 	yield(self, 'RIGHT')
+	object2.pause(true)
 	character.set_swipe(swipe)
 	character.pause(true)
 	get_node("dashTut/Container").hide()
 	get_node("dashTut/Container/swipeRight/swipeRightAnim").stop()
+
+func start_slam_tutorial():
+	character.pause(false)
+	get_node("slideTut/Container").show()
+	get_node("slideTut/Container/slideText").text = "SWIPE DOWN WHILE IN MIDAIR FOR SLAM"
+	get_node("slideTut/Container/swipeDown/swipeDownAnim").play()
+	yield(self, 'DOWN')
+	character.set_swipe(swipe)
+	character.pause(true)
+	get_node("slideTut/Container").hide()
+	get_node("slideTut/Container/swipeDown/swipeDownAnim").stop()
 	save_data['has_finished_tutorial'] = true
 
 func load_score():
