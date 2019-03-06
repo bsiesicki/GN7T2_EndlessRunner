@@ -41,7 +41,7 @@ var swipe_finished = false
 var direction = Vector2()
 
 func _ready():
-	randomize()
+	
 	load_score()
 	
 	add_user_signal("UP")
@@ -72,17 +72,18 @@ func _ready():
 	object1._ready(Vector2(900, 90), object_movement_vector, object_movement_distance,PI)
 	
 	object2 = laser.instance()
-	object2._ready(Vector2(1200, 90), Vector2(0,1.1), object_movement_distance + 40, PI/2)
+	object2._ready(Vector2(1200, 90), Vector2(0,0.98), object_movement_distance + 40, PI/2)
 
 	object3 = laser.instance()
 	object3._ready(Vector2(1400, 50), Vector2(0,0), object_movement_distance , PI)
 	
+	randomize()
 	object4 = random_object()
 	object5 = random_object()
 	
 
-	object4._ready(object3.position+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
-	object5._ready(object4.position+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+	object4._ready(object3.position+Vector2(object_spawn_distance,50), object_movement_vector, object_movement_distance)
+	object5._ready(object4.position+Vector2(object_spawn_distance,50), object_movement_vector, object_movement_distance)
 	
 	self.add_child(object0)
 	self.add_child(object1)
@@ -191,9 +192,11 @@ func play_dead():
 
 func start_jump_tutorial():
 	character.pause(false)
+	object2.pause(false)
 	get_node("jumpTut/Container").show()
 	get_node("jumpTut/Container/swipeUp/swipeUpAnim").play()
 	yield(self, 'UP')
+	object2.pause(true)
 	character.set_swipe(swipe)
 	character.pause(true)
 	get_node("jumpTut/Container").hide()
@@ -201,9 +204,11 @@ func start_jump_tutorial():
 	
 func start_slide_tutorial():
 	character.pause(false)
+	object2.pause(false)
 	get_node("slideTut/Container").show()
 	get_node("slideTut/Container/swipeDown/swipeDownAnim").play()
 	yield(self, 'DOWN')
+	object2.pause(true)
 	character.set_swipe(swipe)
 	character.pause(true)
 	get_node("slideTut/Container").hide()
