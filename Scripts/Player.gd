@@ -59,7 +59,7 @@ func _physics_process(delta):
 			state = SLIDING
 			slide_start = self.position.x
 
-		elif (state == JUMPING or state == SKYDASHING):
+		elif (state == JUMPING or state == SKYDASHING or state == FALLING):
 			velocity.y -= JUMP_SPEED*2
 			velocity.x = player_velocity
 			state = FALLING
