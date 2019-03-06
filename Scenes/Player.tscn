@@ -58,10 +58,10 @@
 [ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00015.png" type="Texture" id=56]
 [ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00016.png" type="Texture" id=57]
 [ext_resource path="res://Assets/Player/Ninja/Cyber_Anim_00017.png" type="Texture" id=58]
-[ext_resource path="res://Assets/Player/Ninja/slide.png" type="Texture" id=59]
-[ext_resource path="res://Assets/Player/Ninja/dash.png" type="Texture" id=60]
-[ext_resource path="res://Assets/Player/Ninja/jump_down.png" type="Texture" id=61]
-[ext_resource path="res://Assets/Player/Ninja/jump.png" type="Texture" id=62]
+[ext_resource path="res://Assets/Player/Ninja/jump_down.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Player/Ninja/jump.png" type="Texture" id=60]
+[ext_resource path="res://Assets/Player/Ninja/slide.png" type="Texture" id=61]
+[ext_resource path="res://Assets/Player/Ninja/dash.png" type="Texture" id=62]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -82,20 +82,10 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 59 ) ],
 "loop": true,
-"name": "ninjaSlide",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ) ],
-"loop": true,
-"name": "ninjaDash",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 61 ) ],
-"loop": true,
 "name": "ninjaFall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 62 ) ],
+"frames": [ ExtResource( 60 ) ],
 "loop": true,
 "name": "ninjaJump",
 "speed": 5.0
@@ -104,10 +94,20 @@ animations = [ {
 "loop": true,
 "name": "ninjaStop",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 61 ) ],
+"loop": true,
+"name": "ninjaSlide",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 62 ) ],
+"loop": true,
+"name": "ninjaDash",
+"speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 position = Vector2( 0, -0.0625 )
 scale = Vector2( 0.8, 0.8 )

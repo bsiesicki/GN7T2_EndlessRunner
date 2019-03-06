@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/platforma_short.png-33a5b0519b51e4da3aa1a3e9f78b855c.stex"
+path="res://.import/laser.png-fc600a78208b1a1d53e086c8bd4e9957.stex"
 
 [deps]
 
-source_file="res://Assets/Environment/platforma_short.png"
-dest_files=[ "res://.import/platforma_short.png-33a5b0519b51e4da3aa1a3e9f78b855c.stex" ]
+source_file="res://Assets/Environment/laser.png"
+dest_files=[ "res://.import/laser.png-fc600a78208b1a1d53e086c8bd4e9957.stex" ]
 
 [params]
 
