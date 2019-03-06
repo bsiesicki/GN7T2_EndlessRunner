@@ -72,11 +72,13 @@ tracks/0/keys = {
 [node name="Node" type="Node" index="0"]
 
 script = ExtResource( 1 )
+swipe = 0
+swipe_angle_const = 0.75
+swipe_distance = 10
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( -1.50624, 60.5994 )
-swipe_distance = 40
 
 [node name="GroundSpawner" parent="." index="1" instance=ExtResource( 3 )]
 
