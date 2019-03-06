@@ -145,7 +145,6 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 [node name="bgm" type="AudioStreamPlayer2D" parent="Camera2D" index="1"]
 
 pause_mode = 2
-position = Vector2( -160, -90 )
 stream = ExtResource( 6 )
 volume_db = -25.0
 pitch_scale = 1.0
@@ -154,7 +153,7 @@ max_distance = 65536.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
-_sections_unfolded = [ "Pause" ]
+_sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="DistanceIndicator" type="CanvasLayer" parent="." index="3"]
 
