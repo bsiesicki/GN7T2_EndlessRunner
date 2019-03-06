@@ -10,6 +10,6 @@ func _ready(starting_position, vect, starting_distance):
 	pass
 
 #kąt startowy do obrotu
-func reappear(new_position, vect, dist):
+func reappear(new_position, vect, dist, count):
 	self.position = new_position + Vector2(0,rand_range(10,30))
 

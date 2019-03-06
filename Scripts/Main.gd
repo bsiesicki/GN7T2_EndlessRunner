@@ -26,6 +26,7 @@ export (Swipe) var swipe = BLANK
 export (float) var swipe_angle_const = 0.75
 export (int) var swipe_distance = 50
 
+var object_count = 0
 var current_camera_position
 var save_file = "user://data.json"
 var save_data = {highscore = 0,
@@ -69,7 +70,7 @@ func _ready():
 	object0.position = Vector2(500,130)
 	
 	object1 = laser.instance()
-	object1._ready(Vector2(900, 90), object_movement_vector, object_movement_distance,PI)
+	object1._ready(Vector2(900, 90), object_movement_vector, object_movement_distance, PI)
 	
 	object2 = laser.instance()
 	object2._ready(Vector2(1200, 90), Vector2(0,0.98), object_movement_distance + 40, PI/2)
@@ -82,8 +83,8 @@ func _ready():
 	object5 = random_object()
 	
 
-	object4._ready(object3.position+Vector2(object_spawn_distance,50), object_movement_vector, object_movement_distance)
-	object5._ready(object4.position+Vector2(object_spawn_distance,50), object_movement_vector, object_movement_distance)
+	object4._ready(object3.position+Vector2(object_spawn_distance,35), object_movement_vector, object_movement_distance)
+	object5._ready(object4.position+Vector2(object_spawn_distance,35), object_movement_vector, object_movement_distance)
 	
 	self.add_child(object0)
 	self.add_child(object1)
@@ -171,10 +172,11 @@ func _physics_process(delta):
 			
 
 func manage_object(position, objectx):
+	object_count+=1
 	object_movement_distance = rand_range(50,150)
 	object_movement_vector = current_camera_position.x / laser_movement_speed_decreaser * Vector2(randf()*2-1,randf()*2-1)
 	objectx = random_object()
-	objectx.reappear(Vector2(position.x,100)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance)
+	objectx.reappear(Vector2(position.x,100)+Vector2(object_spawn_distance,0), object_movement_vector, object_movement_distance, object_count)
 	return objectx
 
 func _on_retryButton_pressed():
