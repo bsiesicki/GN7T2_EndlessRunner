@@ -69,7 +69,7 @@ tracks/0/keys = {
 "values": [ Vector2( 200, 20 ), Vector2( 220, 20 ) ]
 }
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 script = ExtResource( 1 )
 swipe = 0
