@@ -36,7 +36,7 @@ var object_movement_distance = 100
 var platform = preload("res://Scenes/platform.tscn")
 var laser = preload("res://Scenes/laser.tscn")
 var settings = preload("res://Scenes/Settings.tscn")
-var start
+var start = Vector2(0,0)
 var swipe_angle
 var swipe_finished = false
 var direction = Vector2()
