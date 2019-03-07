@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Misc/main_menu_screen.png" type="Texture" id=2]
 
-[node name="creditsMenu" type="Control" index="0"]
+[node name="creditsMenu" type="Control"]
 
 pause_mode = 2
 anchor_left = 0.5

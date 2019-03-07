@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Misc/main_menu_screen.png" type="Texture" id=2]
 
-[node name="settingsMenu" type="Control" index="0"]
+[node name="settingsMenu" type="Control"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -59,9 +59,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 127.0
+margin_left = 126.0
 margin_top = 100.0
-margin_right = 210.0
+margin_right = 209.0
 margin_bottom = 168.0
 rect_scale = Vector2( 0.8, 0.8 )
 rect_pivot_offset = Vector2( 0, 0 )
