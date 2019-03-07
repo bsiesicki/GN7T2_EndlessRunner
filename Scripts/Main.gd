@@ -73,7 +73,7 @@ func _ready():
 	object1._ready(Vector2(900, 90), object_movement_vector, object_movement_distance, PI)
 	
 	object2 = laser.instance()
-	object2._ready(Vector2(1200, 90), Vector2(0,0.98), object_movement_distance + 40, PI/2)
+	object2._ready(Vector2(1200, 90), Vector2(0,1.1), object_movement_distance + 40, PI/2)
 
 	object3 = laser.instance()
 	object3._ready(Vector2(1400, 50), Vector2(0,0), object_movement_distance , PI)
