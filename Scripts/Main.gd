@@ -156,20 +156,20 @@ func _physics_process(delta):
 		get_node("gameOverMenu/gameOverPopup").show()
 		if ((int(character.position.x)/dist_scale)>save_data['highscore']):
 			save_data['highscore'] = int(character.position.x)/dist_scale
-		save_data()
 
 	if(!save_data['has_finished_tutorial']):
 		if (int(character.position.x) == 350):
 			start_jump_tutorial()
 		if (int(character.position.x) == 850):
 			start_slide_tutorial()
-		if (int(character.position.x) == 1100):
+		if (int(character.position.x) == 1140):
 			start_dash_tutorial()
 		if (int(character.position.x) == 1300):
 			character.set_swipe(Swipe.UP)
 		if (int(character.position.x) == 1350):
 			start_slam_tutorial()
 			
+	save_data()
 
 func manage_object(position, objectx):
 	object_count+=1
